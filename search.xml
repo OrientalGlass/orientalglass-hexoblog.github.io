@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>hello</title>
+    <url>/2023/08/22/hello/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>博客搭建</title>
+    <url>/2023/08/22/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</url>
+    <content><![CDATA[<h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><h2 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a>安装Git</h2><p><a href="https://git-scm.com/">https://git-scm.com/</a></p>
+<h2 id="安装Node-js"><a href="#安装Node-js" class="headerlink" title="安装Node.js"></a>安装Node.js</h2><p><a href="https://nodejs.org/en">https://nodejs.org/en</a></p>
+<p>选择LTS版本</p>
+<h2 id="配置Github仓库"><a href="#配置Github仓库" class="headerlink" title="配置Github仓库"></a>配置Github仓库</h2><h3 id="新建仓库"><a href="#新建仓库" class="headerlink" title="新建仓库"></a>新建仓库</h3><p>新建仓库为username.github.io</p>
+<p>orientalglass.github.io</p>
+<p>点击创建即可</p>
+<h3 id="配置SSH-key"><a href="#配置SSH-key" class="headerlink" title="配置SSH key"></a>配置SSH key</h3><p>首先打开安装的GitBash</p>
+<h4 id="配置Github账户信息"><a href="#配置Github账户信息" class="headerlink" title="配置Github账户信息"></a>配置Github账户信息</h4><p>按如下方式设置用户名和GitHub绑定的邮箱</p>
+<p><img src="/2023/08/22/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/3_%E8%AE%BE%E7%BD%AE%E8%B4%A6%E6%88%B7.png" alt="3  设置账户"></p>
+<h4 id="生成SHH密钥"><a href="#生成SHH密钥" class="headerlink" title="生成SHH密钥"></a>生成SHH密钥</h4><p>输入</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;邮箱&quot;</span><br></pre></td></tr></table></figure>
+
+<p>之后会生成一个文件夹,打开该文件夹</p>
+<p>在GitBash窗口按三次回车后会在文件夹生成id_rsa.pub密钥文件</p>
+<p>记事本打开密钥文件复制密钥</p>
+<p><img src="/2023/08/22/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/4_%E7%94%9F%E6%88%90%E5%AF%86%E9%92%A5.png" alt="4 生成密钥"></p>
+<h4 id="添加SSH-Key"><a href="#添加SSH-Key" class="headerlink" title="添加SSH Key"></a>添加SSH Key</h4><p>Github上点击头像 选择settings 选择 SSH And GPG Keys</p>
+<p>点击New SHH Key</p>
+<p>复制密钥内容 AddShhKey即可</p>
+<p><img src="/2023/08/22/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/6_SiginKey.png" alt="6 SiginKey"></p>
+<h1 id="建站"><a href="#建站" class="headerlink" title="建站"></a>建站</h1><p>创建Blog文件夹,用VsCode打开,通过终端输入命令</p>
+<h2 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h2><p>使用命令安装hexo</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+
+<h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><p>终端运行</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo init</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/08/22/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/1_hexoinit.png"></p>
+<h2 id="安装相关依赖"><a href="#安装相关依赖" class="headerlink" title="安装相关依赖"></a>安装相关依赖</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install</span><br></pre></td></tr></table></figure>
+
+<h2 id="创建文件"><a href="#创建文件" class="headerlink" title="创建文件"></a>创建文件</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo g</span><br></pre></td></tr></table></figure>
+
+<h2 id="打开本地服务器进行预览"><a href="#打开本地服务器进行预览" class="headerlink" title="打开本地服务器进行预览"></a>打开本地服务器进行预览</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+
+<p>浏览器打开<a href="http://localhost:4000/%E5%8D%B3%E5%8F%AF">http://localhost:4000/即可</a></p>
+<p><img src="/2023/08/22/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/2_hexo%E7%95%8C%E9%9D%A2.png"></p>
+<h2 id="上传到Github"><a href="#上传到Github" class="headerlink" title="上传到Github"></a>上传到Github</h2><p>首先设置_config.yml文件 翻到最下方设置如下 </p>
+<p>注意这里的repo链接是github.com&#x2F;github用户名&#x2F;仓库名.git</p>
+<p>branch要使用master</p>
+<p><img src="/2023/08/22/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/7_config.png" alt="7 config"></p>
+<p>再在终端安装deployer插件</p>
+<p><img src="/2023/08/22/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/8_%E5%AE%89%E8%A3%85deployer%E6%8F%92%E4%BB%B6.png" alt="8 安装deployer插件"></p>
+<p>依次执行下面三个命令</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+
+<p>最后出现Deploy done:git则说明上传成功</p>
+<p><img src="/2023/08/22/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/9_%E4%B8%8A%E4%BC%A0%E6%88%90%E5%8A%9F.png" alt="9 上传成功"></p>
+<p>此时Github仓库已经加载文件,等待一会后即可查看网页</p>
+<p><img src="/2023/08/22/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/10_%E6%B5%8F%E8%A7%88github.io.png" alt="10 浏览github.io"></p>
+<h1 id="安装配置Bufferfly主题"><a href="#安装配置Bufferfly主题" class="headerlink" title="安装配置Bufferfly主题"></a>安装配置Bufferfly主题</h1><h2 id="安装Butterfly主题"><a href="#安装Butterfly主题" class="headerlink" title="安装Butterfly主题"></a>安装Butterfly主题</h2><ol>
+<li>根目录打开终端使用命令安装</li>
+</ol>
+  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone -b master https://github.com/jerryc127/hexo-theme-butterfly.git themes/butterfly</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><p>下载 pug 以及 stylus 的渲染器</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install hexo-renderer-pug hexo-renderer-stylus --save</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>设置默认主题</p>
+<p><img src="/2023/08/22/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/11_%E5%90%AF%E5%8A%A8butterfly%E4%B8%BB%E9%A2%98.png" alt="11 启动butterfly主题"></p>
+</li>
+</ol>
+<h1 id="Hexo常用命令"><a href="#Hexo常用命令" class="headerlink" title="Hexo常用命令"></a>Hexo常用命令</h1><p>Hexo 是一个基于 Node.js 的静态博客生成器，它使用 Markdown 文件来创建博客文章，并通过主题来渲染生成静态网页。下面是一些常用的 Hexo 主题命令：</p>
+<ol>
+<li><p>安装 Hexo 主题：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install hexo-theme-&lt;theme-name&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>启用 Hexo 主题：<br>在 Hexo 的配置文件 <code>_config.yml</code> 中，将 <code>theme</code> 属性设置为主题名称：</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">theme:</span> <span class="string">&lt;theme-name&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>生成静态网页：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo generate</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>启动本地服务器并预览网站：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>清除缓存文件：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>新建一篇文章：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo new &lt;post-title&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>发布草稿（将草稿状态的文章发布为正式文章）：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo publish &lt;post-title&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除一篇文章：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo delete &lt;post-title&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>编辑一篇文章：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo edit &lt;post-title&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>启用草稿模式（创建草稿状态的文章）：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo new draft &lt;post-title&gt;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>这些是一些常用的 Hexo 主题命令，你可以根据自己的需求和具体的主题进行相应的操作。</p>
+<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><h2 id="Connection-was-Reset"><a href="#Connection-was-Reset" class="headerlink" title="Connection was Reset"></a>Connection was Reset</h2><p>问题描述: hexo d 上传文件时报错</p>
+<p><img src="/2023/08/22/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/%E9%97%AE%E9%A2%981_%E8%BF%9E%E6%8E%A5reset.png" alt="问题1 连接reset"></p>
+<p>解决办法: 由于github的http链接被墙,http链接改为git链接即可</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">git@github.com:OrientalGlass/orientalglass.github.io.git</span></span><br><span class="line">  <span class="comment">#repo: https://github.com/OrientalGlass/orientalglass.github.io.git</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="上传图片问题"><a href="#上传图片问题" class="headerlink" title="上传图片问题"></a>上传图片问题</h2><p><strong>注意: 图片名不要有空格,否则会导致hexo无法解析,可将空格替换为下划线</strong></p>
+<p>参考文章: </p>
+<p><a href="https://juejin.cn/post/6882619951857811469">hexo博客中如何插入图片</a></p>
+<p><a href="https://hexo.io/zh-cn/docs/asset-folders.html#%E5%85%A8%E5%B1%80%E8%B5%84%E6%BA%90%E6%96%87%E4%BB%B6%E5%A4%B9">资源文件夹</a></p>
+<ol>
+<li><p>设置post_asset_folder</p>
+<p>将根目录配置中的<strong>post_asset_folder</strong>设置为true</p>
+<p>之后每次使用hexo new “filename”创建文章时会自动生成同名文件夹用于存储图片</p>
+</li>
+<li><p>安装renderer插件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install hexo-renderer-marked</span><br></pre></td></tr></table></figure>
+
+<p>安装后修改根目录配置如下</p>
+<p>添加marked这两个字段并设置为true</p>
+<p><img src="/2023/08/22/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/%E9%97%AE%E9%A2%982_%E6%8F%92%E4%BB%B6%E9%85%8D%E7%BD%AE.png"></p>
+<p>该插件用于解析图片路径</p>
+</li>
+<li><p>修改typora插入图片设置</p>
+<p>这样设置之后每次复制图片都会自动存储到markdown文件的同名文件夹下,方便复制图片</p>
+<p><img src="/2023/08/22/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/%E9%97%AE%E9%A2%982_%E5%81%8F%E5%A5%BD%E8%AE%BE%E7%BD%AE.png" alt="问题2_偏好设置"></p>
+</li>
+<li><p>复制markdown文件时,将所有图片路径中的**文件名&#x2F;**去除</p>
+<p>这是由于经过上述设置后文章会自动转换为index.html文件,同时<strong>图片和html文件在同一文件夹内</strong></p>
+<p>故直接用图片文件名即可引用图片,不需要加文件夹名</p>
+<p>删除方法: ctrl+f 查找引用 找到后右键更改所有匹配项即可</p>
+</li>
+</ol>
+<p><img src="/2023/08/22/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/%E9%97%AE%E9%A2%982_%E7%94%9F%E6%88%90%E6%96%87%E4%BB%B6%E8%B7%AF%E5%BE%84.png" alt="问题2_生成文件路径"></p>
+]]></content>
+      <categories>
+        <category>经验总结</category>
+      </categories>
+      <tags>
+        <tag>教程</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2023/08/22/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+  </entry>
+</search>
