@@ -684,4 +684,23 @@
         <category>GameReverse</category>
       </categories>
   </entry>
+  <entry>
+    <title>2023-08-22日报</title>
+    <url>/2023/08/22/%E6%97%A5%E6%8A%A5/2023-08/2023-08-22%E6%97%A5%E6%8A%A5/</url>
+    <content><![CDATA[<h1 id="今日收获"><a href="#今日收获" class="headerlink" title="今日收获"></a>今日收获</h1><h2 id="一-利用GitHubPage搭建了个人博客"><a href="#一-利用GitHubPage搭建了个人博客" class="headerlink" title="一. 利用GitHubPage搭建了个人博客"></a>一. 利用GitHubPage搭建了个人博客</h2><p>   博客用到了hexo框架和butterfly主题美化<br>   参考资料:<br>   <a href="https://blog.juanertu.com/archives/e3dc5cbb.html">Hexo 框架 (一)：使用 Hexo 快速搭建个人博客</a><br>   <a href="https://butterfly.js.org/posts/4aa8abbe/#%E4%BB%A3%E7%A2%BC%E9%AB%98%E4%BA%AE%E4%B8%BB%E9%A1%8C">Butterfly 安装文档(三) 主题配置</a><br>   <a href="https://hexo.io/zh-cn/docs/">Hexo官方文档</a></p>
+<h2 id="二-Andorid使用Intent进行活动跳转"><a href="#二-Andorid使用Intent进行活动跳转" class="headerlink" title="二. Andorid使用Intent进行活动跳转"></a>二. Andorid使用Intent进行活动跳转</h2><p>Intent跳转分为显示跳转和隐式跳转</p>
+<ol>
+<li>显式跳转<br>显式跳转顾名思义显式的在代码中进行跳转<br>关键代码<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Button button1=(Button)findViewById(R.id.Button1);</span><br><span class="line">    button1.setOnClickListener(<span class="keyword">new</span> <span class="title class_">View</span>.OnClickListener() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onClick</span><span class="params">(View v)</span> &#123;<span class="comment">//显式intent 很明显可以看到跳转逻辑</span></span><br><span class="line">            Intent intent=<span class="keyword">new</span> <span class="title class_">Intent</span>(MainActivity.<span class="built_in">this</span>,SecondActivity.class);</span><br><span class="line">            startActivity(intent);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure></li>
+<li>隐式跳转<br>隐式跳转需要在AndoridManifest文件中,给活动的intent-filter中设置action和categories<br>每个intent只能指定一个action,可以指定多个categories<br>必须所有指定的action和categories都匹配成功才能跳转<br>关键代码<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Button button2=(Button)findViewById(R.id.Button2);</span><br><span class="line">     button2.setOnClickListener(<span class="keyword">new</span> <span class="title class_">View</span>.OnClickListener() &#123;</span><br><span class="line">         <span class="meta">@Override</span></span><br><span class="line">         <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onClick</span><span class="params">(View v)</span> &#123;</span><br><span class="line">             <span class="comment">//每个intent只能指定一个action</span></span><br><span class="line">             Intent intent=<span class="keyword">new</span> <span class="title class_">Intent</span>(<span class="string">&quot;com.example.MainActivity.ACTION_START&quot;</span>);</span><br><span class="line">             <span class="comment">//可以指定多个category</span></span><br><span class="line">             intent.addCategory(<span class="string">&quot;android.intent.category.DEFAULT&quot;</span>);</span><br><span class="line">             startActivity(intent);</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">             <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">&quot;com.example.MainActivity.ACTION_START&quot;</span>/&gt;</span></span><br><span class="line">             <span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">&quot;android.intent.category.DEFAULT&quot;</span> /&gt;</span></span><br><span class="line">         <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>搭建个人博客方便分类归纳整理文章,本地管理还是有点乱<br>今天起得比较晚,希望晚上睡早一点明天早起<br>今天主要就是搭建博客,明天需要复现题目以及写CS修改器<br>2023-08-22在此立下Flag以后坚持写日报</p>
+]]></content>
+      <categories>
+        <category>2023年8月日报</category>
+      </categories>
+      <tags>
+        <tag>日报</tag>
+      </tags>
+  </entry>
 </search>
