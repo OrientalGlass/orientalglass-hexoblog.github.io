@@ -760,4 +760,95 @@
         <tag>日报</tag>
       </tags>
   </entry>
+  <entry>
+    <title>SMC</title>
+    <url>/2023/08/27/Reverse/%E9%80%86%E5%90%91%E6%8A%80%E6%9C%AF/SMC/</url>
+    <content><![CDATA[<h1 id="SMC（Self-Modified-Code）"><a href="#SMC（Self-Modified-Code）" class="headerlink" title="SMC（Self-Modified Code）"></a>SMC（Self-Modified Code）</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p><strong>自修改代码</strong>（Self-Modified Code）是一类特殊的代码技术，即<strong>在运行时修改自身代码</strong>，从而使得程序实际行为与反汇编结果不符，同时修改前的代码段数据也可能非合法指令，从而无法被反汇编器识别，这加大了软件逆向工程的难度。</p>
+<p>自修改代码通常有两种破解方式，第一种是根据静态分析结果直接修改程序二进制文件，第二种则是在动态调试时将解密后的程序从内存中 dump 下来。</p>
+<h2 id="编写SMC程序"><a href="#编写SMC程序" class="headerlink" title="编写SMC程序"></a>编写SMC程序</h2><p>一般smc程序的执行流程(假设关键函数为func)</p>
+<ol>
+<li>main函数中获取func函数的地址</li>
+<li>取消func函数处的页面保护</li>
+<li>对func进行解密操作之后再调用func</li>
+</ol>
+<p>为了编写smc程序,我们需要进行如下操作</p>
+<ol>
+<li>先写好func函数和main函数中的解密代码(此时不能真正解密,还需要矫正)</li>
+<li>编译后用ida打开exe程序,找到func地址及大小,从而修正主函数的参数</li>
+<li>用ida对func函数进行patch,保存patch后的程序</li>
+</ol>
+<p><strong>注: 下列所有代码均在VS2022 x64 debug进行编译</strong></p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;Windows.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">func</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y)</span> </span>&#123;</span><br><span class="line">	<span class="type">unsigned</span> <span class="type">int</span> z = <span class="number">0x12345678</span>;</span><br><span class="line">	x = y ^ z;</span><br><span class="line">	y = x ^ z;</span><br><span class="line">	<span class="type">char</span> flag[] = <span class="string">&quot;helloworld&quot;</span>;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%s&quot;</span>, flag);</span><br><span class="line">	<span class="keyword">return</span> x ^ y^z;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	DWORD64 old;</span><br><span class="line">	byte* funcAddr = (byte*)func;<span class="comment">//函数地址</span></span><br><span class="line">	<span class="built_in">VirtualProtect</span>(func,<span class="number">0xE1</span>, PAGE_EXECUTE_READWRITE, &amp;old);<span class="comment">//第二个参数为大小,可以编译后通过ida查看得到</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">0xE1</span>; i++)<span class="comment">//解密操作 也需要修正大小 这里是修正后的</span></span><br><span class="line">		funcAddr[i] ^= <span class="number">0x12</span>;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">func</span>(<span class="number">5</span>, <span class="number">6</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果直接运行该程序肯定会出错,因为此时相当于对func函数加密而非解密,所以需要用ida进行patch</p>
+<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>查看反汇编可以发现,实际使用func函数地址时有个中间变量j_func跳转的过程</p>
+<p><img src="/2023/08/27/Reverse/%E9%80%86%E5%90%91%E6%8A%80%E6%9C%AF/SMC/9_j_func.png"></p>
+<p>跟进查看j_func 可以看到这是个jmp(e9 e7 06 00 00),会跳转到真实func函数处</p>
+<p><img src="/2023/08/27/Reverse/%E9%80%86%E5%90%91%E6%8A%80%E6%9C%AF/SMC/10_jmp.png" alt="image-20230827124720651"></p>
+<p>真实func函数</p>
+<p><img src="/11_%E7%9C%9F%E5%AE%9Efunc%E5%87%BD%E6%95%B0" alt="image-20230827124735376"></p>
+<p>所以直接用上述代码对func函数进行解密是无效的,这是由于<strong>v5并非直接保存真实func地址,而是保存了j_func的地址</strong></p>
+<p>那么我们可以尝试对func函数地址进行修正,<strong>获取到真实func地址再进行解密</strong>即可</p>
+<h3 id="修正后的代码"><a href="#修正后的代码" class="headerlink" title="修正后的代码"></a>修正后的代码</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;Windows.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">func</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y)</span> &#123;<span class="comment">//定义的func函数</span></span><br><span class="line">	<span class="type">unsigned</span> <span class="type">int</span> z = <span class="number">0x12345678</span>;</span><br><span class="line">	x = y ^ z;</span><br><span class="line">	y = x ^ z;</span><br><span class="line">	<span class="type">char</span> flag[] = <span class="string">&quot;helloworld&quot;</span>;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%s&quot;</span>, flag);</span><br><span class="line">	<span class="keyword">return</span> x ^ y^z;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">	DWORD64 old;<span class="comment">//用于记录原始的页面保护属性 也可以不使用,第四个参数设置为NULL即可</span></span><br><span class="line">	VirtualProtect(func,<span class="number">0xE1</span>, PAGE_EXECUTE_READWRITE, &amp;old);</span><br><span class="line">	byte* pfunc = (byte*)func;</span><br><span class="line">	pfunc = pfunc + *(DWORD*)(pfunc+<span class="number">1</span>) + <span class="number">5</span>;<span class="comment">//加上偏移值才是真实func地址 +5是由于e9 jmp指令后的四字节是相对偏移</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">0xE1</span>; i++)</span><br><span class="line">		pfunc[i] ^= <span class="number">0x12</span>;</span><br><span class="line"></span><br><span class="line">	func(<span class="number">5</span>, <span class="number">6</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="对真实func地址的换算"><a href="#对真实func地址的换算" class="headerlink" title="对真实func地址的换算"></a>对真实func地址的换算</h4><p>执行pfunc&#x3D;(byte*)func时,可以发现0x07FF6390511A4地址处的值为<strong>e9 e7 06 00 00</strong>(即jmp到真实func的指令)</p>
+<p>此时pfunc保存的是jmp指令的地址,并非真实func地址</p>
+<p><img src="/2023/08/27/Reverse/%E9%80%86%E5%90%91%E6%8A%80%E6%9C%AF/SMC/5_%E5%81%8F%E7%A7%BB.png" alt="5_偏移"></p>
+<p>执行pfunc &#x3D; pfunc + <em>(DWORD</em>)(pfunc+1) + 5后</p>
+<p>观察func地址,和计算结果一致,说明成功找到真实func地址</p>
+<p><img src="/2023/08/27/Reverse/%E9%80%86%E5%90%91%E6%8A%80%E6%9C%AF/SMC/6_%E6%89%BE%E5%88%B0func%E5%9C%B0%E5%9D%80.png" alt="6_找到func地址"></p>
+<p>注意: +5是由于jmp指令(e9)后跟的4个字节是<strong>相对于jmp指令下一条指令的偏移值</strong></p>
+<p>由于jmp自身占5字节,所以跳转<strong>目的地址&#x3D;jmp指令首地址+5+offset</strong></p>
+<p>对应反汇编代码</p>
+<p><img src="/2023/08/27/Reverse/%E9%80%86%E5%90%91%E6%8A%80%E6%9C%AF/SMC/0_%E5%8F%8D%E6%B1%87%E7%BC%96%E5%87%BD%E6%95%B0.png" alt="0_反汇编函数"></p>
+<h4 id="ida查找函数地址及大小"><a href="#ida查找函数地址及大小" class="headerlink" title="ida查找函数地址及大小"></a>ida查找函数地址及大小</h4><p>用ida打开,找到函数地址及大小</p>
+<p><img src="/2023/08/27/Reverse/%E9%80%86%E5%90%91%E6%8A%80%E6%9C%AF/SMC/1_%E6%9F%A5%E6%89%BE%E5%87%BD%E6%95%B0%E5%9C%B0%E5%9D%80%E5%8F%8A%E5%A4%A7%E5%B0%8F.png" alt="1_查找函数地址及大小"></p>
+<h4 id="idapython脚本进行patch"><a href="#idapython脚本进行patch" class="headerlink" title="idapython脚本进行patch"></a>idapython脚本进行patch</h4><p><img src="/2023/08/27/Reverse/%E9%80%86%E5%90%91%E6%8A%80%E6%9C%AF/SMC/2_idapython%E4%BF%AE%E6%94%B9func.png" alt="2_idapython修改func"></p>
+<p>脚本</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> idc</span><br><span class="line"><span class="keyword">import</span> ida_bytes</span><br><span class="line">addr=<span class="number">0x140011890</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0xe1</span>):</span><br><span class="line">	tmp=idc.get_wide_byte(addr)</span><br><span class="line">	ida_bytes.patch_byte(addr,tmp^<span class="number">0x12</span>)</span><br><span class="line">	addr=addr+<span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p>记得保存patch后的程序,再用ida打开patch后的程序,在解密func函数后下断点动调观察</p>
+<h4 id="测试patch后的程序"><a href="#测试patch后的程序" class="headerlink" title="测试patch后的程序"></a>测试patch后的程序</h4><p>解密前的func函数,代码无法正常识别</p>
+<p><img src="/2023/08/27/Reverse/%E9%80%86%E5%90%91%E6%8A%80%E6%9C%AF/SMC/7_%E5%87%BD%E6%95%B0%E8%A7%A3%E5%AF%86%E5%89%8D.png"></p>
+<p>解密后还未识别的函数</p>
+<p><img src="/2023/08/27/Reverse/%E9%80%86%E5%90%91%E6%8A%80%E6%9C%AF/SMC/3_%E9%87%8D%E6%96%B0%E8%AF%86%E5%88%AB%E5%89%8D.png" alt="3_重新识别前"></p>
+<p>手动重新识别函数后</p>
+<p><img src="/2023/08/27/Reverse/%E9%80%86%E5%90%91%E6%8A%80%E6%9C%AF/SMC/8_%E8%A7%A3%E5%AF%86%E5%90%8E%E7%9A%84%E5%87%BD%E6%95%B0.png"></p>
+]]></content>
+      <categories>
+        <category>逆向技术</category>
+      </categories>
+      <tags>
+        <tag>SMC</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>2023-08-27日报</title>
+    <url>/2023/08/27/%E6%97%A5%E6%8A%A5/2023-08/2023-08-27%E6%97%A5%E6%8A%A5/</url>
+    <content><![CDATA[<h1 id="收获"><a href="#收获" class="headerlink" title="收获"></a>收获</h1><h2 id="一-SMC编程"><a href="#一-SMC编程" class="headerlink" title="一. SMC编程"></a>一. SMC编程</h2><p>蓝帽杯Story这题漏了源码,其中就有SMC的操作,比较好奇为什么源码中没有给出加密后的函数,而是直接对函数进行解密操作<br>制作一个smc程序首先要明确smc的基本过程:</p>
+<ol>
+<li>获取关键函数func的地址</li>
+<li>解密关键函数func</li>
+<li>调用func</li>
+</ol>
+<p>制作一个smc程序的思路:</p>
+<ol>
+<li>编写关键函数func,在main函数中编写解密代码<br>此时func并未加密</li>
+<li>编译,ida查找func的地址及其大小</li>
+<li>idapython对func函数进行加密(和1中的解密可以互逆)</li>
+<li>保存patch后的程序,运行该程序即可解密并执行</li>
+</ol>
+<p>遇到了一个神奇的问题: debug模式下获取func函数地址并不能直接获取到,而是会拿到一个j_func的地址,这是一个jmp指令,用于跳转到真实func地址<br>所以制作时还要注意换算成真实func地址</p>
+<h2 id="二-回顾了Frida-Java层主动调用-写了Native基础Hook"><a href="#二-回顾了Frida-Java层主动调用-写了Native基础Hook" class="headerlink" title="二. 回顾了Frida Java层主动调用,写了Native基础Hook"></a>二. 回顾了Frida Java层主动调用,写了Native基础Hook</h2><p>Java层可以用Java.choose获取类的实例对象,获取之后可以执行各种操作,感觉Java.use能做到的Java.choose都可以做到</p>
+<p>静态成员和方法可以通过Java.use获取到的类直接调用<br>实例成员和方法必须通过Java.choose获取和调用<br>注意变量的值需要用.value获取,变量本身也是引用类型,是一个地址</p>
+<p>Nativehook的基础是使用Interceptor.attach() API<br>关键就是获取Native层函数的地址<br>静态注册的函数hook并不难,直接找模块名,函数名就可以获取到函数地址<br>动态注册的函数需要获取相对基地址的偏移,今天没有做出来,示例脚本有点问题</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>smc是临时起意想做的,出现了一些问题并成功解决<br>回顾frida java层hook时试了一下书上没有的操作<br>多加入自己的思考去学习</p>
+]]></content>
+      <categories>
+        <category>2023年8月日报</category>
+      </categories>
+      <tags>
+        <tag>日报</tag>
+      </tags>
+  </entry>
 </search>
