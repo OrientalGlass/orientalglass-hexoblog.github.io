@@ -851,4 +851,18 @@
         <tag>日报</tag>
       </tags>
   </entry>
+  <entry>
+    <title>2023-08-29日报</title>
+    <url>/2023/08/29/%E6%97%A5%E6%8A%A5/2023-08/2023-08-29%E6%97%A5%E6%8A%A5/</url>
+    <content><![CDATA[<h1 id="收获"><a href="#收获" class="headerlink" title="收获"></a>收获</h1><h2 id="一-ADB远程调试"><a href="#一-ADB远程调试" class="headerlink" title="一.ADB远程调试"></a>一.ADB远程调试</h2><p>部分系统自带adb远程调试开关,没有带的话可以安装一个WIFI ADB<br>adb connect ip:port即可连接<br>手机模拟器可以改为桥接模式进行远程调试,注意要设置好ip</p>
+<h2 id="二-Smali基础"><a href="#二-Smali基础" class="headerlink" title="二.Smali基础"></a>二.Smali基础</h2><p>学习了Smali数据类型和基本结构以及基本指令<br>数据类型有基本类型和引用类型<br>结构主要是开头三行信息,.field变量声明 .method方法段<br>基本指令有 const声明常量 invoke调用方法 move赋值 if-[condition]分支判断</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>昨天卡在了一个Native层动态注册函数的hook,推测是机子的问题,下单了pixel<br>native动态注册函数hook关键是找到JNI_OnLoad中调用的RegisterNatives方法,hook该方法的methods参数可以获取到注册的函数的地址,从而计算出函数的RVA<br>今天的app破解实战也有点问题,示例程序app不弹窗,objection一开始可以带插件注入然后又不行<br>以后用frida还是linux环境比较好,今天装wallbreaker插件在win环境有问题</p>
+]]></content>
+      <categories>
+        <category>2023年8月日报</category>
+      </categories>
+      <tags>
+        <tag>日报</tag>
+      </tags>
+  </entry>
 </search>
