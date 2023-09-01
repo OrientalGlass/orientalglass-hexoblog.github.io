@@ -920,4 +920,43 @@
         <tag>日报</tag>
       </tags>
   </entry>
+  <entry>
+    <title>2023-09-01日报</title>
+    <url>/2023/09/01/%E6%97%A5%E6%8A%A5/2023-09/2023-09-01%E6%97%A5%E6%8A%A5/</url>
+    <content><![CDATA[<h1 id="收获"><a href="#收获" class="headerlink" title="收获"></a>收获</h1><h2 id="objection实战"><a href="#objection实战" class="headerlink" title="objection实战"></a>objection实战</h2><h3 id="objection主动调用"><a href="#objection主动调用" class="headerlink" title="objection主动调用"></a>objection主动调用</h3><p>无参调用<br>android heap execute handle methodname<br>有参函数调用<br>android heap evaluate handle<br>输入想要执行的脚本会自动执行</p>
+<h3 id="分析恶意app1"><a href="#分析恶意app1" class="headerlink" title="分析恶意app1"></a>分析恶意app1</h3><p>该恶意app会禁止USB调试,所以adb的usb调试模式无效<br>但是意外发现adb的wifi调试不受影响<br>adb可以正常进入app的shell并强制关闭</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">adb shell am force-stop &lt;package_name&gt;</span><br></pre></td></tr></table></figure>
+<p>objection基本思路</p>
+<ol>
+<li><p>列出activity和service<br>这步主要是为了得到哪些活动或服务在运行</p>
+</li>
+<li><p>hook类所有方法<br>hook类所有方法后可以得知是哪些函数在被调用,从而定位关键函数</p>
+</li>
+<li><p>hook关键函数<br>hook关键函数可以得到函数参数返回值和调用栈<br>通过调用栈可以知道调用关系从而查找相关函数</p>
+</li>
+</ol>
+<h2 id="app分析破解实战"><a href="#app分析破解实战" class="headerlink" title="app分析破解实战"></a>app分析破解实战</h2><h3 id="去除未加固app升级弹窗"><a href="#去除未加固app升级弹窗" class="headerlink" title="去除未加固app升级弹窗"></a>去除未加固app升级弹窗</h3><p>分析应当从开发者的角度思考<br>弹窗有三种常见的实现:</p>
+<ol>
+<li>android.app.Dialog</li>
+<li>android.app.AlertDialog</li>
+<li>android.widget.PopupWindow<br>所以可以在内存中搜索这三种实例,如果找到可以hook对应类,从而定位关键函数</li>
+</ol>
+<p>如果有需求还可以让程序加载时hook函数<br>在objection explore参数后跟-s “命令”即可在app加载时进行hook </p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">objection -g com.app.pkgname explore -s &quot;android hooking watch class android.app.Dialog&quot;</span><br></pre></td></tr></table></figure>
+<p>这种加载时hook很适合加载时调用了onCreate等初始化方法创建后不再调用的类</p>
+<p>找到关键函数后可以反编译修改smali文件,重打包后需要进行签名才能安装</p>
+<h2 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h2><ol>
+<li><p>wallbreaker<br>objectsearch搜索内存实例<br>objectdump打印内存实例的成员</p>
+</li>
+<li><p>frida-dexdump<br>脱壳插件</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>2023年9月日报</category>
+      </categories>
+      <tags>
+        <tag>日报</tag>
+      </tags>
+  </entry>
 </search>
