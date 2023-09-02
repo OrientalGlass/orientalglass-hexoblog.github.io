@@ -959,4 +959,23 @@
         <tag>日报</tag>
       </tags>
   </entry>
+  <entry>
+    <title>2023-09-02日报</title>
+    <url>/2023/09/02/%E6%97%A5%E6%8A%A5/2023-09/2023-09-02%E6%97%A5%E6%8A%A5/</url>
+    <content><![CDATA[<h1 id="收获"><a href="#收获" class="headerlink" title="收获"></a>收获</h1><h2 id="KCTF-AliCrackme-1"><a href="#KCTF-AliCrackme-1" class="headerlink" title="KCTF AliCrackme_1"></a>KCTF AliCrackme_1</h2><p>这题只需要简单的hook一下java层关键函数就可以得到映射表和加密字符串,很容易反推出flag<br>crackme_2是一个so层带反调试的app,没有找到反调试点在哪,顺着逻辑走是假flag 发现了tea加密</p>
+<h2 id="羊城杯2023"><a href="#羊城杯2023" class="headerlink" title="羊城杯2023"></a>羊城杯2023</h2><p>做出来Blast和CSGO这两题<br>Blast是md5(md5()),有一大坨无意义的混淆,看关键代码<br>CSGO的go语言并不复杂,动调一下就可以看到密文比较逻辑<br>ezAndroid的so可能有反调试,比较奇怪的是OnClick方法居然能native化,一直以为只能java层定义<br>也有可能解密文件更换了dex(猜测)<br>vm_wo是虚拟保护,但是架构比较特殊,angr不能跑</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ol>
+<li><p>一些以前没有在意的基础性的东西还是要好好总结一下,<br>今天甚至才发现买来的pixel3xl没有设置ro.debuggable<br>对于so层调试,idapython的使用等基操得练练</p>
+</li>
+<li><p>比赛题目也需要多总结多复现<br>最近的比赛很明显能发现考察混淆,加密算法,go逆向,VMP等<br>这些常见比赛题型还是很有价值的,尤其是vmp,手搓虚拟机解释器的人他不帅吗</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>2023年9月日报</category>
+      </categories>
+      <tags>
+        <tag>日报</tag>
+      </tags>
+  </entry>
 </search>
