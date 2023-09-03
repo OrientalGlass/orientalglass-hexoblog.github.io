@@ -978,4 +978,131 @@
         <tag>日报</tag>
       </tags>
   </entry>
+  <entry>
+    <title>IDAPython基本使用</title>
+    <url>/2023/09/03/Reverse/%E9%80%86%E5%90%91%E6%8A%80%E6%9C%AF/IDAPython%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<h1 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h1><ol>
+<li><a href="https://www.cnblogs.com/iBinary/p/14642662.html">IDAPython入门教程 基于IDA7.5_Python3 第一讲 简介与地址获取</a></li>
+<li><a href="https://wonderkun.cc/2020/12/11/idapython%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/">idapython使用笔记</a></li>
+<li><a href="http://www.qfrost.com/posts/idapython/#idapython3%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0">IDAPython3学习笔记</a></li>
+<li>[<a href="https://www.yunyawu.com/2020/06/28/ida-python%E5%AD%A6%E4%B9%A0/">IDA系列教程：IDA Python</a>]</li>
+<li><a href="https://zzzzsky.com/2021/12/08/LearnIDAPython/">IDAPython 学习笔记</a></li>
+<li><a href="https://www.hex-rays.com/products/ida/support/ida74_idapython_no_bc695_porting_guide.shtml">Porting from IDAPython 6.x-7.3, to 7.4</a></li>
+</ol>
+<h1 id="相关资料"><a href="#相关资料" class="headerlink" title="相关资料"></a>相关资料</h1><p>官方文档<br><a href="https://www.hex-rays.com/products/ida/support/idapython_docs/">https://www.hex-rays.com/products/ida/support/idapython_docs/</a></p>
+<p>vscode编写idapython的插件<br><a href="https://github.com/0xeb/ida-qscripts">https://github.com/0xeb/ida-qscripts</a></p>
+<h1 id="IDAPython基本操作"><a href="#IDAPython基本操作" class="headerlink" title="IDAPython基本操作"></a>IDAPython基本操作</h1><p>快捷键 shift+F2</p>
+<p>idc.BADADDR 类似NULL </p>
+<h2 id="获取当前光标选择的地址"><a href="#获取当前光标选择的地址" class="headerlink" title="获取当前光标选择的地址"></a>获取当前光标选择的地址</h2><p>idc.here()</p>
+<p>idc.get_screen_ea()</p>
+<h2 id="获取程序最小地址"><a href="#获取程序最小地址" class="headerlink" title="获取程序最小地址"></a>获取程序最小地址</h2><p>ida_ida.inf_get_min_ea()</p>
+<p>print(“min&#x3D;”,hex(ida_ida.inf_get_min_ea()))</p>
+<h2 id="获取程序最大地址"><a href="#获取程序最大地址" class="headerlink" title="获取程序最大地址"></a>获取程序最大地址</h2><p>ida_ida.inf_get_max_ea()</p>
+<p>print(“max&#x3D;”,hex(ida_ida.inf_get_max_ea()))</p>
+<h2 id="注释和变量名"><a href="#注释和变量名" class="headerlink" title="注释和变量名"></a>注释和变量名</h2><p>获取指定地址处的注释</p>
+<p><a href="https://www.hex-rays.com/products/ida/support/idapython_docs/ida_bytes.html#ida_bytes.get_cmt">ida_bytes.get_cmt(addr,rptble)</a></p>
+<p>rptble&#x3D;False时获取用户注释</p>
+<p>print(ida_bytes.get_cmt(addr,False))</p>
+<p>修改指定地址处的注释</p>
+<p><a href="https://www.hex-rays.com/products/ida/support/idapython_docs/ida_bytes.html#ida_bytes.set_cmt">ida_bytes.set_cmt(addr,comment,rptble)</a></p>
+<p>rptble&#x3D;True时,若已经存在注释则不会进行注释</p>
+<p>ida_bytes.set_cmt(addr,”Common666”,False)</p>
+<p>设置指定地址的变量名</p>
+<p><a href="https://www.hex-rays.com/products/ida/support/idapython_docs/idc.html#idc.set_name">idc.set_name(addr,name,flags&#x3D;0)</a></p>
+<p>idc.set_name(0x140002350,”hello”)</p>
+<h1 id="指令相关"><a href="#指令相关" class="headerlink" title="指令相关"></a>指令相关</h1><h2 id="获取指令上一条指令地址"><a href="#获取指令上一条指令地址" class="headerlink" title="获取指令上一条指令地址"></a>获取指令上一条指令地址</h2><p>idc.prev.head(addr)</p>
+<h2 id="获取指令下一条指令地址"><a href="#获取指令下一条指令地址" class="headerlink" title="获取指令下一条指令地址"></a>获取指令下一条指令地址</h2><p>next_head(addr)</p>
+<h2 id="获取指定地址的指令-包括操作数"><a href="#获取指定地址的指令-包括操作数" class="headerlink" title="获取指定地址的指令(包括操作数)"></a>获取指定地址的指令(包括操作数)</h2><p><a href="https://www.hex-rays.com/products/ida/support/idapython_docs/idc.html#idc.generate_disasm_line">idc.generate_disasm_line(addr,flags)</a></p>
+<p>print(idc.generate_disasm_line(addr,0)) 一般flags设置为0即可</p>
+<h2 id="获取指定地址的指令-不含操作数"><a href="#获取指定地址的指令-不含操作数" class="headerlink" title="获取指定地址的指令(不含操作数)"></a>获取指定地址的指令(不含操作数)</h2><p><a href="https://www.hex-rays.com/products/ida/support/idapython_docs/idc.html#idc.print_insn_mnem">idc.print_insn_mnem(addr)</a></p>
+<h2 id="获取当前指令第num-1个操作数"><a href="#获取当前指令第num-1个操作数" class="headerlink" title="获取当前指令第num+1个操作数"></a>获取当前指令第num+1个操作数</h2><p><a href="https://www.hex-rays.com/products/ida/support/idapython_docs/idc.html#idc.print_operand">idc.print_operand(addr,num)</a></p>
+<p> 如果操作数不存在则返回空</p>
+<h1 id="调试相关"><a href="#调试相关" class="headerlink" title="调试相关"></a>调试相关</h1><h2 id="启动调试"><a href="#启动调试" class="headerlink" title="启动调试"></a>启动调试</h2><p><a href="https://www.hex-rays.com/products/ida/support/idapython_docs/ida_dbg.html#ida_dbg.start_process">ida_dbg.start_process(path&#x3D;None, args&#x3D;None, sdir&#x3D;None)</a></p>
+<p>ida_dbg.start_process()</p>
+<p>如果要传递参数可以给args填入字符串</p>
+<h2 id="继续调试"><a href="#继续调试" class="headerlink" title="继续调试"></a>继续调试</h2><p><a href="https://www.hex-rays.com/products/ida/support/idapython_docs/ida_dbg.html#ida_dbg.continue_process">ida_dbg.continue_process()</a></p>
+<p>ida_dbg.continue_process()</p>
+<h2 id="运行到指定地址"><a href="#运行到指定地址" class="headerlink" title="运行到指定地址"></a>运行到指定地址</h2><p><a href="https://www.hex-rays.com/products/ida/support/idapython_docs/ida_dbg.html#ida_dbg.run_to">ida_dbg.run_to(addr)</a></p>
+<h2 id="等待下一个调试事件"><a href="#等待下一个调试事件" class="headerlink" title="等待下一个调试事件"></a>等待下一个调试事件</h2><p><a href="https://www.hex-rays.com/products/ida/support/idapython_docs/ida_dbg.html#ida_dbg.wait_for_next_event">ida_dbg.wait_for_next_event()</a></p>
+<p>引用佬哥文章内容</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">wait_for_next_event(EVENT_TYPE, flags)  获取并清除调试器事件代码，普通代码返回<span class="number">0x20</span>, 断点、ret指令返回<span class="number">0x10</span>，程序结束返回负数</span><br><span class="line">必须在导致进程执行的每个函数之后调用，以便检索调试器的事件代码，否则可能会阻止后续尝试单步执行或运行进程。例如，以下代码片段将只单步执行调试器一次，因为在两次调用StepOver之间没有调用以清除最后一个事件类型</span><br><span class="line">step_over()</span><br><span class="line">step_over()</span><br><span class="line">step_over()</span><br><span class="line">正确的做法应该是在每一次调用step_over后调用一次wait_for_next_event</span><br><span class="line">step_over()</span><br><span class="line">wait_for_next_event(WFNE_SUSP, -<span class="number">1</span>)    <span class="comment"># 是否获取返回值都可以清除调试器事件代码，从而继续执行调试</span></span><br><span class="line">step_over()</span><br><span class="line">wait_for_next_event(WFNE_SUSP, -<span class="number">1</span>)</span><br><span class="line">step_over()</span><br><span class="line">wait_for_next_event(WFNE_SUSP, -<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">事件类型“WFNE_SUSP”将等待导致被调试进程挂起的事件，例如异常或断点</span><br><span class="line">事件类型“WFNE_CONT”可以恢复被挂起的进程，继续执行</span><br><span class="line">如：</span><br><span class="line">event = wait_for_next_event(WFNE_SUSP, -<span class="number">1</span>)</span><br><span class="line">event = wait_for_next_event(WFNE_ANY|WFNE_CONT, -<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="在指定地址下断点"><a href="#在指定地址下断点" class="headerlink" title="在指定地址下断点"></a>在指定地址下断点</h2><p><a href="https://www.hex-rays.com/products/ida/support/idapython_docs/ida_dbg.html#ida_dbg.add_bpt">ida_dbg.add_bpt(addr)</a></p>
+<p>ida_dbg.add_bpt(0x7ff677ab119e)</p>
+<h2 id="根据寄存器名获取寄存器的值"><a href="#根据寄存器名获取寄存器的值" class="headerlink" title="根据寄存器名获取寄存器的值"></a>根据寄存器名获取寄存器的值</h2><p><a href="https://www.hex-rays.com/products/ida/support/idapython_docs/ida_dbg.html#ida_dbg.get_reg_val">ida_dbg.get_reg_val(regname)</a></p>
+<p>print(ida_dbg.get_reg_val(“RAX”))</p>
+<p>idc中是get_reg_value(regname)</p>
+<p>print(idc.get_reg_value(“RAX”))</p>
+<h2 id="根据寄存器名设置寄存器值"><a href="#根据寄存器名设置寄存器值" class="headerlink" title="根据寄存器名设置寄存器值"></a>根据寄存器名设置寄存器值</h2><p><a href="https://www.hex-rays.com/products/ida/support/idapython_docs/ida_dbg.html#ida_dbg.set_reg_val">ida_dbg.set_reg_val(regname,value)</a></p>
+<p>ida_dbg.set_reg_val(“RAX”,15)</p>
+<p>idc中是set_reg_value(value,regname)</p>
+<p>idc.set_reg_value(8,”rax”)</p>
+<h1 id="获取数据"><a href="#获取数据" class="headerlink" title="获取数据"></a>获取数据</h1><ol>
+<li><p>ida_bytes.get_byte(addr)</p>
+</li>
+<li><p>ida_bytes.get_word(addr)</p>
+</li>
+<li><p>ida_bytes.get_dword(addr)</p>
+</li>
+<li><p>ida_bytes.get_qword(addr)</p>
+</li>
+<li><p>ida_bytes.get_bytes(addr,size) 获取指定地址处指定字节数</p>
+</li>
+<li><p><a href="https://www.hex-rays.com/products/ida/support/idapython_docs/idc.html#idc.get_strlit_contents">idc.get_strlit_contents(addr,length&#x3D;-1,strtype&#x3D;0)</a></p>
+<p>获取指定地址处的字符串</p>
+<p>length参数可以指定字符串长度,默认为最大字符串长度(0结束符)</p>
+</li>
+</ol>
+<h1 id="patch"><a href="#patch" class="headerlink" title="patch"></a>patch</h1><ol>
+<li>ida_bytes.patch_byte(addr,value)</li>
+<li>ida_bytes.patch_word(addr,value)</li>
+<li>ida_bytes.patch_dword(addr,value)</li>
+<li>ida_bytes.patch_qword(addr,value)</li>
+</ol>
+<h1 id="数值判断"><a href="#数值判断" class="headerlink" title="数值判断"></a>数值判断</h1><ol>
+<li>ida_bytes.is_byte(addr)</li>
+<li>ida_bytes.is_word(addr)</li>
+<li>ida_bytes.is_dword(addr)</li>
+<li>ida_bytes.is_qword(addr)</li>
+</ol>
+<h1 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h1><p>idc.find_binary(addr, flag, pattern, radix&#x3D;16)</p>
+<p>第一个参数是起始地址,第二个参数是搜索方式,这里是向下(低地址向高地址搜索),第三个是格式匹配串,默认为16进制字节串,字节间用空格隔开</p>
+<p>常见搜索方向</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SEARCH_UP = 0   #常用，搜索方向</span><br><span class="line">SEARCH_DOWN = 1  #常用，搜索方向</span><br></pre></td></tr></table></figure>
+
+<p>官方文档已弃用find_binary函数,推荐使用bin_search </p>
+<p><a href="https://www.hex-rays.com/products/ida/support/idapython_docs/ida_bytes.html#ida_bytes.bin_search">ida_bytes.bin_search(start, end, pattern,flag)</a></p>
+<p>这里的pattern需要用ida_bytes.parse_binpat_str()转换为模式串对象</p>
+<p>parse_binpat_str函数有四个参数,感觉很麻烦,还不如find_binary</p>
+<h1 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h1><h2 id="NKCTF2023-earlier"><a href="#NKCTF2023-earlier" class="headerlink" title="NKCTF2023 earlier"></a>NKCTF2023 earlier</h2><p>去除花指令脚本</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> idc</span><br><span class="line"><span class="keyword">import</span> idautils</span><br><span class="line"><span class="keyword">import</span> ida_bytes</span><br><span class="line">pattern = <span class="string">&quot;33 C0 85 C0 74 03 75 00 E8&quot;</span> 	<span class="comment"># 匹配花指令字节码</span></span><br><span class="line">cur_addr = <span class="number">0x401000</span>						<span class="comment"># 程序起始地址</span></span><br><span class="line"><span class="keyword">while</span> cur_addr != idc.BADADDR:			<span class="comment"># 遍历程序可访问地址</span></span><br><span class="line">    cur_addr = idc.find_binary(cur_addr,SEARCH_DOWN,pattern) </span><br><span class="line">    <span class="comment"># 匹配花指令所在地址,第一个参数是起始地址,第二个参数是搜索方式,这里是向下(低地址向高地址搜索),第三个是格式字符串</span></span><br><span class="line">    <span class="keyword">if</span> cur_addr == idc.BADADDR:								 <span class="comment"># 如果未匹配到</span></span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;patch address: &quot;</span>,<span class="built_in">hex</span>(cur_addr)) 				 <span class="comment"># 打印起始地址</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">9</span>):									 <span class="comment"># 开始patch</span></span><br><span class="line">            ida_bytes.patch_byte(cur_addr,<span class="number">0x90</span>)</span><br><span class="line">            cur_addr += <span class="number">1</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="CISCN2023-moveAside"><a href="#CISCN2023-moveAside" class="headerlink" title="CISCN2023 moveAside"></a>CISCN2023 moveAside</h2><p>Sink师傅脚本</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> idaapi <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"> </span><br><span class="line">f = <span class="built_in">open</span>(<span class="string">r&#x27;C:\Users\admin\Desktop\out.txt&#x27;</span>, <span class="string">&#x27;w&#x27;</span>)</span><br><span class="line">i = <span class="number">0</span></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    espVal = get_reg_val(<span class="string">&#x27;esp&#x27;</span>) <span class="comment">#获取寄存器的值</span></span><br><span class="line">    oAddr = get_dword(espVal + <span class="number">4</span>)	<span class="comment">#获取参数地址</span></span><br><span class="line">    tAddr = get_dword(espVal + <span class="number">8</span>)</span><br><span class="line">    o = get_byte(oAddr)<span class="comment">#获取参数值</span></span><br><span class="line">    t = get_byte(tAddr)</span><br><span class="line">    <span class="keyword">if</span> o != t:</span><br><span class="line">        patch_byte(oAddr, t)<span class="comment">#修改8600154 保证通过strcmp函数检测</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&#x27;<span class="subst">&#123;i&#125;</span>: o = <span class="subst">&#123;<span class="built_in">hex</span>(o)&#125;</span>, t = <span class="subst">&#123;<span class="built_in">hex</span>(t)&#125;</span>&#x27;</span>)</span><br><span class="line">    f.write(<span class="string">f&#x27;<span class="subst">&#123;i&#125;</span>: o = <span class="subst">&#123;<span class="built_in">hex</span>(o)&#125;</span>, t = <span class="subst">&#123;<span class="built_in">hex</span>(t)&#125;</span>\n&#x27;</span>)</span><br><span class="line">    f.flush()</span><br><span class="line">    i += <span class="number">1</span></span><br><span class="line">    continue_process()<span class="comment">#继续调试</span></span><br><span class="line">    time.sleep(<span class="number">1</span>)<span class="comment">#程序休眠</span></span><br><span class="line">    <span class="keyword">if</span> i == <span class="number">48</span>:</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    wait_for_next_event(WFNE_SUSP, -<span class="number">1</span>)<span class="comment">#等待下一个调试事件</span></span><br></pre></td></tr></table></figure>
+
+
+
+]]></content>
+      <categories>
+        <category>逆向技术</category>
+      </categories>
+      <tags>
+        <tag>IDAPython</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>2023-09-03日报</title>
+    <url>/2023/09/03/%E6%97%A5%E6%8A%A5/2023-09/2023-09-03%E6%97%A5%E6%8A%A5/</url>
+    <content><![CDATA[<h1 id="收获"><a href="#收获" class="headerlink" title="收获"></a>收获</h1><p>系统学习了IDAPython的基本语法<br>IDAPython拥有调试功能,可以实现一些骚操作<br>以后做题目多试着用IDAPython提取数据和patch加深印象</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>今天上午搬书去了,下午给靶场出了两道简单题,<br>晚上才学了点东西,明天就正式开始上学了,还得加油复现羊城杯的题</p>
+]]></content>
+      <categories>
+        <category>2023年9月日报</category>
+      </categories>
+      <tags>
+        <tag>日报</tag>
+      </tags>
+  </entry>
 </search>
