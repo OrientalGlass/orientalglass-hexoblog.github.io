@@ -1105,4 +1105,18 @@
         <tag>日报</tag>
       </tags>
   </entry>
+  <entry>
+    <title>2023-09-04日报</title>
+    <url>/2023/09/04/%E6%97%A5%E6%8A%A5/2023-09/2023-09-04%E6%97%A5%E6%8A%A5/</url>
+    <content><![CDATA[<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>今天开学第一天,课比较多加上昨晚没睡好今天很没精神,一天也没学多少东西<br>回顾了下js基础语法和html,web前端作业感觉挺麻烦,希望以后学的后端省点事</p>
+<p>AliCrackme_2这题的反调试引出了一个问题:安卓常见反调试技术以及如何反反调试<br>明天准备学习一下安卓反调试技术,尝试复现vm_wo(先了解虚拟执行基本原理,尝试写一个简单的虚拟执行程序)</p>
+<p>学校的课程还是一如既往的没什么用,还是得自学,多做笔记,有点后悔之前学web没做笔记了</p>
+]]></content>
+      <categories>
+        <category>2023年9月日报</category>
+      </categories>
+      <tags>
+        <tag>日报</tag>
+      </tags>
+  </entry>
 </search>
