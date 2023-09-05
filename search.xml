@@ -1216,4 +1216,17 @@
         <category>Android</category>
       </categories>
   </entry>
+  <entry>
+    <title>Tue Sep 05 2023 08:00:00 GMT+0800 (中国标准时间)</title>
+    <url>/2023/09/05/%E6%97%A5%E6%8A%A5/2023-09/2023-09-05%E6%97%A5%E6%8A%A5/</url>
+    <content><![CDATA[<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>上午上课确实很无聊,带了电脑想学一学安卓反调试技术,感觉没学到什么<br>后来又去做了alicrackme2,没做出来<br>下午继续看了一下午,晚上问了下宽哥,最后推测是安卓版本问题,app目标sdk19(安卓4.4),希望明天pixel1刷安卓7能跑</p>
+<p>以后可以学学linux管道符,感觉很方便<br>C盘复制之后需要修复引导</p>
+]]></content>
+      <categories>
+        <category>2023年9月日报</category>
+      </categories>
+      <tags>
+        <tag>日报</tag>
+      </tags>
+  </entry>
 </search>
