@@ -1229,4 +1229,23 @@
         <tag>日报</tag>
       </tags>
   </entry>
+  <entry>
+    <title>2023-09-06日报</title>
+    <url>/2023/09/06/%E6%97%A5%E6%8A%A5/2023-09/2023-09-06%E6%97%A5%E6%8A%A5/</url>
+    <content><![CDATA[<h1 id="收获"><a href="#收获" class="headerlink" title="收获"></a>收获</h1><h2 id="安洵杯-2019-crackMe"><a href="#安洵杯-2019-crackMe" class="headerlink" title="[安洵杯 2019]crackMe"></a>[安洵杯 2019]crackMe</h2><p>上午看了一会安洵杯2019的crackme 感觉这题的Hook Messagebox和VEH异常处理很是巧妙<br>推测hook是IAT hook,找到导入函数地址表中的导入函数地址并修改 正好借此机会学学IAT HOOK(感觉可以总结一下常见HOOK技术了)<br>VEH机制相关文章<br><a href="http://www.youngroe.com/2015/09/05/Windows/windows-exception-handling-mechanism/">http://www.youngroe.com/2015/09/05/Windows/windows-exception-handling-mechanism/</a><br><a href="https://bbs.kanxue.com/thread-166472-1.htm">https://bbs.kanxue.com/thread-166472-1.htm</a></p>
+<h2 id="ida-android-server-32位-可以部分调试Alicrackme-2"><a href="#ida-android-server-32位-可以部分调试Alicrackme-2" class="headerlink" title="ida android server(32位)可以部分调试Alicrackme_2"></a>ida android server(32位)可以部分调试Alicrackme_2</h2><p>现象是可以逐个加载so文件,当加载到目标so文件时ida会询问文件是否相同,不过没有办法断到init_array和JNI_OnLoad(可能是有init函数?没有发现,难道是linker_init?)<br>总之下次<strong>调试32位so应该使用32位server</strong></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>买的pixel到了两台,一台正常解锁另一台解不了锁,下午和晚上基本都在搞刷机和解锁</p>
+<ol>
+<li>[SWPU 2019]easyapp这题用pixel刷安卓7.1.0和安卓7.1.2都没办法hook得到返回值,安卓8.1.0一开始没有崩溃,返回了一个字符串(不正确),后面又开始崩溃</li>
+<li>没解锁的那台手机搜寻了网上很多文章,有用pixel安卓10绕过进行解锁的(需要连接wifi访问google,可是这个手机有网络锁,wifi和插卡都不能用),后来去找解网络锁的办法也没什么效果</li>
+</ol>
+<p>明天好好研究下安洵杯2019crackme,争取学学unidbg<br>花这么多时间在配置环境上面实在太难受了</p>
+]]></content>
+      <categories>
+        <category>2023年9月日报</category>
+      </categories>
+      <tags>
+        <tag>日报</tag>
+      </tags>
+  </entry>
 </search>
