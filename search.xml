@@ -1248,4 +1248,85 @@
         <tag>日报</tag>
       </tags>
   </entry>
+  <entry>
+    <title>2023-09-08日报</title>
+    <url>/2023/09/08/%E6%97%A5%E6%8A%A5/2023-09/2023-09-08%E6%97%A5%E6%8A%A5/</url>
+    <content><![CDATA[<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ol>
+<li><p>7号一天的课都很无聊,感觉是在浪费时间,以后得带着电脑自学<br>只在晚上仔细看了下安洵杯2019 CrackMe</p>
+</li>
+<li><p>今天主要是学了下数据库的基本使用<br>老师讲的全是理论没有看到实际操作,很抽象<br>mysql环境有问题一直在调试和安装,最后还是SQLServer方便</p>
+</li>
+<li><p>处理了下迎新,蓝帽杯往返,安装取证软件等杂事</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>2023年9月日报</category>
+      </categories>
+      <tags>
+        <tag>日报</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>安洵杯2019_CrackMe</title>
+    <url>/2023/09/08/%E9%A2%98%E7%9B%AE/BUUCTF/%E5%AE%89%E6%B4%B5%E6%9D%AF2019_CrackMe/</url>
+    <content><![CDATA[<h1 id="main"><a href="#main" class="headerlink" title="main"></a>main</h1><p>首先查看main函数可以发现基本逻辑非常简单,这里有个非法内存访问指令</p>
+<p><img src="/2023/09/08/%E9%A2%98%E7%9B%AE/BUUCTF/%E5%AE%89%E6%B4%B5%E6%9D%AF2019_CrackMe/1_main.png" alt="1_main"></p>
+<p>查看汇编代码可以发现注册了seh</p>
+<p><img src="/2023/09/08/%E9%A2%98%E7%9B%AE/BUUCTF/%E5%AE%89%E6%B4%B5%E6%9D%AF2019_CrackMe/2_%E6%B3%A8%E5%86%8Cseh.png" alt="2_注册seh"></p>
+<p>调试时可以发现MessageBox函数被hook,可以交叉引用发现hook函数</p>
+<h1 id="Hook-MessageBoxW"><a href="#Hook-MessageBoxW" class="headerlink" title="Hook MessageBoxW"></a>Hook MessageBoxW</h1><p>首先获取了自身的基地址</p>
+<p><img src="/2023/09/08/%E9%A2%98%E7%9B%AE/BUUCTF/%E5%AE%89%E6%B4%B5%E6%9D%AF2019_CrackMe/3_%E8%8E%B7%E5%8F%96%E8%87%AA%E8%BA%AB%E5%9F%BA%E5%9D%80.png" alt="3_获取自身基址"></p>
+<p>然后加载USER32.dll并获取MessageBoxW函数的地址(导出地址)</p>
+<p><img src="/2023/09/08/%E9%A2%98%E7%9B%AE/BUUCTF/%E5%AE%89%E6%B4%B5%E6%9D%AF2019_CrackMe/4_%E5%8A%A0%E8%BD%BDuser32dll%E5%B9%B6%E8%8E%B7%E5%8F%96%E5%87%BD%E6%95%B0%E5%9C%B0%E5%9D%80.png" alt="4_加载user32dll并获取函数地址"></p>
+<p>跟进之后可以发现第一个for循环是查找user32.dll</p>
+<p>然后获取了导入USER32.dll对应的导入函数表首地址</p>
+<p>第二个while循环是获取MessageBoxW函数地址</p>
+<p><img src="/2023/09/08/%E9%A2%98%E7%9B%AE/BUUCTF/%E5%AE%89%E6%B4%B5%E6%9D%AF2019_CrackMe/6_%E5%AF%BB%E6%89%BEmessageboxw%E5%87%BD%E6%95%B0%E5%9C%B0%E5%9D%80.png" alt="6_寻找messageboxw函数地址"></p>
+<p>查看pe可以发现user32.dll的第一个导入函数是messageboxA,第二个才是MessageBoxW,所以第二个循环用于查找该函数</p>
+<p><img src="/2023/09/08/%E9%A2%98%E7%9B%AE/BUUCTF/%E5%AE%89%E6%B4%B5%E6%9D%AF2019_CrackMe/5_%E5%AF%BC%E5%85%A5%E5%87%BD%E6%95%B0.png" alt="5_导入函数"></p>
+<h2 id="hook-messageboxw"><a href="#hook-messageboxw" class="headerlink" title="hook messageboxw"></a>hook messageboxw</h2><p>下面一段是修改MessageBoxW函数的地址</p>
+<p><img src="/2023/09/08/%E9%A2%98%E7%9B%AE/BUUCTF/%E5%AE%89%E6%B4%B5%E6%9D%AF2019_CrackMe/7_%E4%BF%AE%E6%94%B9messageboxw%E5%87%BD%E6%95%B0%E5%9C%B0%E5%9D%80.png" alt="7_修改messageboxw函数地址"></p>
+<p>不过值得注意的是这里应该是修改的IAT(导入函数地址表)中的内容,即将真实MessageBoxW函数地址hook为另一个函数</p>
+<p><img src="/2023/09/08/%E9%A2%98%E7%9B%AE/BUUCTF/%E5%AE%89%E6%B4%B5%E6%9D%AF2019_CrackMe/pMessageBoxW.png" alt="pMessageBoxW"></p>
+<h2 id="注册VEH"><a href="#注册VEH" class="headerlink" title="注册VEH"></a>注册VEH</h2><p>跟进到新的函数地址中可以发现有个base换表操作,并注册了一个VEH函数</p>
+<p><img src="/2023/09/08/%E9%A2%98%E7%9B%AE/BUUCTF/%E5%AE%89%E6%B4%B5%E6%9D%AF2019_CrackMe/8_%E6%B3%A8%E5%86%8CVEH.png" alt="8_注册VEH"></p>
+<p>跟进异常处理函数可以发现这里有个加密操作,还注册了一个顶层异常处理</p>
+<p><img src="/2023/09/08/%E9%A2%98%E7%9B%AE/BUUCTF/%E5%AE%89%E6%B4%B5%E6%9D%AF2019_CrackMe/9_%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%E5%87%BD%E6%95%B0.png" alt="9_异常处理函数"></p>
+<h2 id="顶层异常处理器"><a href="#顶层异常处理器" class="headerlink" title="顶层异常处理器"></a>顶层异常处理器</h2><p>顶层异常处理器中也是一个加密操作</p>
+<p><img src="/2023/09/08/%E9%A2%98%E7%9B%AE/BUUCTF/%E5%AE%89%E6%B4%B5%E6%9D%AF2019_CrackMe/10_%E9%A1%B6%E5%B1%82%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%E5%99%A8.png" alt="10_顶层异常处理器"></p>
+<h1 id="程序流程"><a href="#程序流程" class="headerlink" title="程序流程"></a>程序流程</h1><ol>
+<li>hook MeessageBoxW函数,注册VEH</li>
+<li>注册SEH</li>
+<li>触发异常,执行VEH</li>
+<li>VEH处理函数注册顶层异常处理函数</li>
+<li>调用SEH异常处理</li>
+<li>调用顶层异常处理</li>
+</ol>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>这题的关键在于IAT HOOK和VEH异常处理</p>
+<p>看其他师傅的WP说是SM4加密,暂时还没发现,后续在研究研究</p>
+<h2 id="SetUnhandledExceptionFilter"><a href="#SetUnhandledExceptionFilter" class="headerlink" title="SetUnhandledExceptionFilter"></a>SetUnhandledExceptionFilter</h2><p><a href="https://learn.microsoft.com/zh-cn/windows/win32/api/errhandlingapi/nf-errhandlingapi-setunhandledexceptionfilter">SetUnhandledExceptionFilter</a>是Windows操作系统提供的一个函数，用于设置未处理异常过滤器（Unhandled Exception Filter）。当在进程中发生未处理的异常时，注册的未处理异常过滤器将被调用，允许开发人员对异常进行处理或采取其他适当的操作。</p>
+<p>函数原型如下：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">LPTOP_LEVEL_EXCEPTION_FILTER <span class="title function_">SetUnhandledExceptionFilter</span><span class="params">(</span></span><br><span class="line"><span class="params">  LPTOP_LEVEL_EXCEPTION_FILTER lpTopLevelExceptionFilter</span></span><br><span class="line"><span class="params">)</span>;</span><br></pre></td></tr></table></figure>
+
+<p>参数说明：</p>
+<ul>
+<li><code>lpTopLevelExceptionFilter</code>：指向顶层异常过滤器（Top Level Exception Filter）的函数指针，该函数的原型为<code>LONG WINAPI TopLevelExceptionFilter(struct _EXCEPTION_POINTERS *ExceptionInfo)</code>。</li>
+</ul>
+<p>返回值：</p>
+<ul>
+<li>返回之前注册的顶层异常过滤器的函数指针。如果没有先前注册的过滤器，则返回NULL。</li>
+</ul>
+<p>顶层异常过滤器是一个函数，用于处理未处理的异常。它接收一个指向_EXCEPTION_POINTERS结构的指针，该结构包含关于异常的详细信息，例如异常代码、异常参数和异常上下文等。</p>
+<p>通过SetUnhandledExceptionFilter函数注册的未处理异常过滤器将在发生未处理的异常时被调用。过滤器可以执行各种操作，如记录日志、生成崩溃报告、修改异常上下文、恢复程序状态等。如果过滤器成功处理了异常，它可以返回EXCEPTION_EXECUTE_HANDLER以指示异常已被处理，或返回EXCEPTION_CONTINUE_SEARCH以继续搜索其他异常处理程序。</p>
+]]></content>
+      <categories>
+        <category>BUUCTF</category>
+      </categories>
+      <tags>
+        <tag>IATHook</tag>
+        <tag>VEH</tag>
+        <tag>SEH</tag>
+      </tags>
+  </entry>
 </search>

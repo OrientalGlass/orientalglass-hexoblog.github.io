@@ -1,0 +1,216 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>安洵杯2019_CrackMe | OrientalGlass</title><meta name="author" content="OrientalGlass"><meta name="copyright" content="OrientalGlass"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="main首先查看main函数可以发现基本逻辑非常简单,这里有个非法内存访问指令  查看汇编代码可以发现注册了seh  调试时可以发现MessageBox函数被hook,可以交叉引用发现hook函数 Hook MessageBoxW首先获取了自身的基地址  然后加载USER32.dll并获取MessageBoxW函数的地址(导出地址)  跟进之后可以发现第一个for循环是查找user32.dll 然">
+<meta property="og:type" content="article">
+<meta property="og:title" content="安洵杯2019_CrackMe">
+<meta property="og:url" content="http://example.com/2023/09/08/%E9%A2%98%E7%9B%AE/BUUCTF/%E5%AE%89%E6%B4%B5%E6%9D%AF2019_CrackMe/index.html">
+<meta property="og:site_name" content="OrientalGlass">
+<meta property="og:description" content="main首先查看main函数可以发现基本逻辑非常简单,这里有个非法内存访问指令  查看汇编代码可以发现注册了seh  调试时可以发现MessageBox函数被hook,可以交叉引用发现hook函数 Hook MessageBoxW首先获取了自身的基地址  然后加载USER32.dll并获取MessageBoxW函数的地址(导出地址)  跟进之后可以发现第一个for循环是查找user32.dll 然">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/%E5%A4%B4%E5%83%8F1.jpg">
+<meta property="article:published_time" content="2023-09-08T14:21:12.000Z">
+<meta property="article:modified_time" content="2023-09-08T14:22:35.890Z">
+<meta property="article:author" content="OrientalGlass">
+<meta property="article:tag" content="IATHook">
+<meta property="article:tag" content="VEH">
+<meta property="article:tag" content="SEH">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/%E5%A4%B4%E5%83%8F1.jpg"><link rel="shortcut icon" href="/img/%E5%A4%B4%E5%83%8F1.jpg"><link rel="canonical" href="http://example.com/2023/09/08/%E9%A2%98%E7%9B%AE/BUUCTF/%E5%AE%89%E6%B4%B5%E6%9D%AF2019_CrackMe/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":300},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '安洵杯2019_CrackMe',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-09-08 22:22:35'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/./img/%E5%A4%B4%E5%83%8F1.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">25</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">11</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="OrientalGlass"><span class="site-name">OrientalGlass</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">安洵杯2019_CrackMe</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-09-08T14:21:12.000Z" title="发表于 2023-09-08 22:21:12">2023-09-08</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-09-08T14:22:35.890Z" title="更新于 2023-09-08 22:22:35">2023-09-08</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/BUUCTF/">BUUCTF</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="安洵杯2019_CrackMe"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><article class="post-content" id="article-container"><h1 id="main"><a href="#main" class="headerlink" title="main"></a>main</h1><p>首先查看main函数可以发现基本逻辑非常简单,这里有个非法内存访问指令</p>
+<p><img src="/2023/09/08/%E9%A2%98%E7%9B%AE/BUUCTF/%E5%AE%89%E6%B4%B5%E6%9D%AF2019_CrackMe/1_main.png" alt="1_main"></p>
+<p>查看汇编代码可以发现注册了seh</p>
+<p><img src="/2023/09/08/%E9%A2%98%E7%9B%AE/BUUCTF/%E5%AE%89%E6%B4%B5%E6%9D%AF2019_CrackMe/2_%E6%B3%A8%E5%86%8Cseh.png" alt="2_注册seh"></p>
+<p>调试时可以发现MessageBox函数被hook,可以交叉引用发现hook函数</p>
+<h1 id="Hook-MessageBoxW"><a href="#Hook-MessageBoxW" class="headerlink" title="Hook MessageBoxW"></a>Hook MessageBoxW</h1><p>首先获取了自身的基地址</p>
+<p><img src="/2023/09/08/%E9%A2%98%E7%9B%AE/BUUCTF/%E5%AE%89%E6%B4%B5%E6%9D%AF2019_CrackMe/3_%E8%8E%B7%E5%8F%96%E8%87%AA%E8%BA%AB%E5%9F%BA%E5%9D%80.png" alt="3_获取自身基址"></p>
+<p>然后加载USER32.dll并获取MessageBoxW函数的地址(导出地址)</p>
+<p><img src="/2023/09/08/%E9%A2%98%E7%9B%AE/BUUCTF/%E5%AE%89%E6%B4%B5%E6%9D%AF2019_CrackMe/4_%E5%8A%A0%E8%BD%BDuser32dll%E5%B9%B6%E8%8E%B7%E5%8F%96%E5%87%BD%E6%95%B0%E5%9C%B0%E5%9D%80.png" alt="4_加载user32dll并获取函数地址"></p>
+<p>跟进之后可以发现第一个for循环是查找user32.dll</p>
+<p>然后获取了导入USER32.dll对应的导入函数表首地址</p>
+<p>第二个while循环是获取MessageBoxW函数地址</p>
+<p><img src="/2023/09/08/%E9%A2%98%E7%9B%AE/BUUCTF/%E5%AE%89%E6%B4%B5%E6%9D%AF2019_CrackMe/6_%E5%AF%BB%E6%89%BEmessageboxw%E5%87%BD%E6%95%B0%E5%9C%B0%E5%9D%80.png" alt="6_寻找messageboxw函数地址"></p>
+<p>查看pe可以发现user32.dll的第一个导入函数是messageboxA,第二个才是MessageBoxW,所以第二个循环用于查找该函数</p>
+<p><img src="/2023/09/08/%E9%A2%98%E7%9B%AE/BUUCTF/%E5%AE%89%E6%B4%B5%E6%9D%AF2019_CrackMe/5_%E5%AF%BC%E5%85%A5%E5%87%BD%E6%95%B0.png" alt="5_导入函数"></p>
+<h2 id="hook-messageboxw"><a href="#hook-messageboxw" class="headerlink" title="hook messageboxw"></a>hook messageboxw</h2><p>下面一段是修改MessageBoxW函数的地址</p>
+<p><img src="/2023/09/08/%E9%A2%98%E7%9B%AE/BUUCTF/%E5%AE%89%E6%B4%B5%E6%9D%AF2019_CrackMe/7_%E4%BF%AE%E6%94%B9messageboxw%E5%87%BD%E6%95%B0%E5%9C%B0%E5%9D%80.png" alt="7_修改messageboxw函数地址"></p>
+<p>不过值得注意的是这里应该是修改的IAT(导入函数地址表)中的内容,即将真实MessageBoxW函数地址hook为另一个函数</p>
+<p><img src="/2023/09/08/%E9%A2%98%E7%9B%AE/BUUCTF/%E5%AE%89%E6%B4%B5%E6%9D%AF2019_CrackMe/pMessageBoxW.png" alt="pMessageBoxW"></p>
+<h2 id="注册VEH"><a href="#注册VEH" class="headerlink" title="注册VEH"></a>注册VEH</h2><p>跟进到新的函数地址中可以发现有个base换表操作,并注册了一个VEH函数</p>
+<p><img src="/2023/09/08/%E9%A2%98%E7%9B%AE/BUUCTF/%E5%AE%89%E6%B4%B5%E6%9D%AF2019_CrackMe/8_%E6%B3%A8%E5%86%8CVEH.png" alt="8_注册VEH"></p>
+<p>跟进异常处理函数可以发现这里有个加密操作,还注册了一个顶层异常处理</p>
+<p><img src="/2023/09/08/%E9%A2%98%E7%9B%AE/BUUCTF/%E5%AE%89%E6%B4%B5%E6%9D%AF2019_CrackMe/9_%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%E5%87%BD%E6%95%B0.png" alt="9_异常处理函数"></p>
+<h2 id="顶层异常处理器"><a href="#顶层异常处理器" class="headerlink" title="顶层异常处理器"></a>顶层异常处理器</h2><p>顶层异常处理器中也是一个加密操作</p>
+<p><img src="/2023/09/08/%E9%A2%98%E7%9B%AE/BUUCTF/%E5%AE%89%E6%B4%B5%E6%9D%AF2019_CrackMe/10_%E9%A1%B6%E5%B1%82%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%E5%99%A8.png" alt="10_顶层异常处理器"></p>
+<h1 id="程序流程"><a href="#程序流程" class="headerlink" title="程序流程"></a>程序流程</h1><ol>
+<li>hook MeessageBoxW函数,注册VEH</li>
+<li>注册SEH</li>
+<li>触发异常,执行VEH</li>
+<li>VEH处理函数注册顶层异常处理函数</li>
+<li>调用SEH异常处理</li>
+<li>调用顶层异常处理</li>
+</ol>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>这题的关键在于IAT HOOK和VEH异常处理</p>
+<p>看其他师傅的WP说是SM4加密,暂时还没发现,后续在研究研究</p>
+<h2 id="SetUnhandledExceptionFilter"><a href="#SetUnhandledExceptionFilter" class="headerlink" title="SetUnhandledExceptionFilter"></a>SetUnhandledExceptionFilter</h2><p><a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/windows/win32/api/errhandlingapi/nf-errhandlingapi-setunhandledexceptionfilter">SetUnhandledExceptionFilter</a>是Windows操作系统提供的一个函数，用于设置未处理异常过滤器（Unhandled Exception Filter）。当在进程中发生未处理的异常时，注册的未处理异常过滤器将被调用，允许开发人员对异常进行处理或采取其他适当的操作。</p>
+<p>函数原型如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">LPTOP_LEVEL_EXCEPTION_FILTER <span class="title function_">SetUnhandledExceptionFilter</span><span class="params">(</span></span><br><span class="line"><span class="params">  LPTOP_LEVEL_EXCEPTION_FILTER lpTopLevelExceptionFilter</span></span><br><span class="line"><span class="params">)</span>;</span><br></pre></td></tr></table></figure>
+
+<p>参数说明：</p>
+<ul>
+<li><code>lpTopLevelExceptionFilter</code>：指向顶层异常过滤器（Top Level Exception Filter）的函数指针，该函数的原型为<code>LONG WINAPI TopLevelExceptionFilter(struct _EXCEPTION_POINTERS *ExceptionInfo)</code>。</li>
+</ul>
+<p>返回值：</p>
+<ul>
+<li>返回之前注册的顶层异常过滤器的函数指针。如果没有先前注册的过滤器，则返回NULL。</li>
+</ul>
+<p>顶层异常过滤器是一个函数，用于处理未处理的异常。它接收一个指向_EXCEPTION_POINTERS结构的指针，该结构包含关于异常的详细信息，例如异常代码、异常参数和异常上下文等。</p>
+<p>通过SetUnhandledExceptionFilter函数注册的未处理异常过滤器将在发生未处理的异常时被调用。过滤器可以执行各种操作，如记录日志、生成崩溃报告、修改异常上下文、恢复程序状态等。如果过滤器成功处理了异常，它可以返回EXCEPTION_EXECUTE_HANDLER以指示异常已被处理，或返回EXCEPTION_CONTINUE_SEARCH以继续搜索其他异常处理程序。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">OrientalGlass</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2023/09/08/%E9%A2%98%E7%9B%AE/BUUCTF/%E5%AE%89%E6%B4%B5%E6%9D%AF2019_CrackMe/">http://example.com/2023/09/08/题目/BUUCTF/安洵杯2019_CrackMe/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">OrientalGlass</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/IATHook/">IATHook</a><a class="post-meta__tags" href="/tags/VEH/">VEH</a><a class="post-meta__tags" href="/tags/SEH/">SEH</a></div><div class="post_share"><div class="social-share" data-image="/./img/%E5%A4%B4%E5%83%8F1.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2023/09/08/%E6%97%A5%E6%8A%A5/2023-09/2023-09-08%E6%97%A5%E6%8A%A5/" title="2023-09-08日报"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">2023-09-08日报</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/./img/%E5%A4%B4%E5%83%8F1.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">OrientalGlass</div><div class="author-info__description">This is My Blog</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">25</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">11</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/OrientalGlass"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/OrientalGlass" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:1945416482@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#main"><span class="toc-number">1.</span> <span class="toc-text">main</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Hook-MessageBoxW"><span class="toc-number">2.</span> <span class="toc-text">Hook MessageBoxW</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#hook-messageboxw"><span class="toc-number">2.1.</span> <span class="toc-text">hook messageboxw</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E5%86%8CVEH"><span class="toc-number">2.2.</span> <span class="toc-text">注册VEH</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A1%B6%E5%B1%82%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%E5%99%A8"><span class="toc-number">2.3.</span> <span class="toc-text">顶层异常处理器</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F%E6%B5%81%E7%A8%8B"><span class="toc-number">3.</span> <span class="toc-text">程序流程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">4.</span> <span class="toc-text">总结</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#SetUnhandledExceptionFilter"><span class="toc-number">4.1.</span> <span class="toc-text">SetUnhandledExceptionFilter</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/09/08/%E9%A2%98%E7%9B%AE/BUUCTF/%E5%AE%89%E6%B4%B5%E6%9D%AF2019_CrackMe/" title="安洵杯2019_CrackMe">安洵杯2019_CrackMe</a><time datetime="2023-09-08T14:21:12.000Z" title="发表于 2023-09-08 22:21:12">2023-09-08</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/09/08/%E6%97%A5%E6%8A%A5/2023-09/2023-09-08%E6%97%A5%E6%8A%A5/" title="2023-09-08日报">2023-09-08日报</a><time datetime="2023-09-08T14:14:13.000Z" title="发表于 2023-09-08 22:14:13">2023-09-08</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/09/06/%E6%97%A5%E6%8A%A5/2023-09/2023-09-06%E6%97%A5%E6%8A%A5/" title="2023-09-06日报">2023-09-06日报</a><time datetime="2023-09-06T14:03:05.000Z" title="发表于 2023-09-06 22:03:05">2023-09-06</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/09/05/%E6%97%A5%E6%8A%A5/2023-09/2023-09-05%E6%97%A5%E6%8A%A5/" title="Tue Sep 05 2023 08:00:00 GMT+0800 (中国标准时间)">Tue Sep 05 2023 08:00:00 GMT+0800 (中国标准时间)</a><time datetime="2023-09-05T15:42:36.000Z" title="发表于 2023-09-05 23:42:36">2023-09-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/09/05/Android/%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/IDA%E8%B0%83%E8%AF%95%E5%AE%89%E5%8D%93SO%E6%96%87%E4%BB%B6/" title="IDA调试安卓SO文件">IDA调试安卓SO文件</a><time datetime="2023-09-05T09:01:10.000Z" title="发表于 2023-09-05 17:01:10">2023-09-05</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2023 By OrientalGlass</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Welcome To My Blog!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
