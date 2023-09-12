@@ -1341,4 +1341,21 @@
         <tag>日报</tag>
       </tags>
   </entry>
+  <entry>
+    <title>2023-09-12日报</title>
+    <url>/2023/09/12/%E6%97%A5%E6%8A%A5/2023-09/2023-09-12%E6%97%A5%E6%8A%A5/</url>
+    <content><![CDATA[<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ol>
+<li><p>昨天研究了下网鼎杯2020 signal<br>这题的vmp保护可以通过获取指令执行流,修改代码为逆代码,再反向执行指令序列即可<br> vmp保护的关键是获取执行流和对应指令序列</p>
+</li>
+<li><p>今天主要是尝试将rwProcMem33编译进安卓内核<br> 参考文章<a href="https://bbs.kanxue.com/thread-278647.htm#msg_header_h2_5">https://bbs.kanxue.com/thread-278647.htm#msg_header_h2_5</a><br> 文章正好和我的测试机非常匹配,可惜今晚没有成功编译出内核,最后有个报错卡了很久<br> 明天再试试看,实在不行弃用ubuntu18.04,改用20.04</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>2023年9月日报</category>
+      </categories>
+      <tags>
+        <tag>日报</tag>
+      </tags>
+  </entry>
 </search>
