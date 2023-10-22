@@ -1770,4 +1770,19 @@
         <tag>日报</tag>
       </tags>
   </entry>
+  <entry>
+    <title>2023-10-22日报</title>
+    <url>/2023/10/23/%E6%97%A5%E6%8A%A5/2023-10/2023-10-22%E6%97%A5%E6%8A%A5/</url>
+    <content><![CDATA[<h1 id="收获"><a href="#收获" class="headerlink" title="收获"></a>收获</h1><h2 id="完成N1CTF-re签到题AdditionPlus"><a href="#完成N1CTF-re签到题AdditionPlus" class="headerlink" title="完成N1CTF re签到题AdditionPlus"></a>完成N1CTF re签到题AdditionPlus</h2><p>这题昨天的思路就是使用Ponce插件爆,可惜没设置好ponce最大执行时间所以没爆出来<br>今天把时间和空间设置拉满就爆出来了,patch程序八位字节一组爆即可</p>
+<h2 id="使用了几个Xposed模块"><a href="#使用了几个Xposed模块" class="headerlink" title="使用了几个Xposed模块"></a>使用了几个Xposed模块</h2><p>qq防撤回还是很有用的,还有一些解锁vip,以后可以多搞搞机,整点xposed开发</p>
+<h2 id="学了一点手机抓包"><a href="#学了一点手机抓包" class="headerlink" title="学了一点手机抓包"></a>学了一点手机抓包</h2><p>基本配置也不难,手机设置代理到主机,主机开启抓包即可<br>注意windwos需要关闭防火墙,否则没有任何反应,kali虚拟机可以直接抓</p>
+<h2 id="了解了一下eCapture抓包工具"><a href="#了解了一下eCapture抓包工具" class="headerlink" title="了解了一下eCapture抓包工具"></a>了解了一下eCapture抓包工具</h2><p>该工具基于ebpf技术,对linux内核版本要求至少是&gt;&#x3D;4.18,可惜测试机内核老用不了<br>kali试了一下也没成功,还得继续研究下ebpf技术基础才可以</p>
+]]></content>
+      <categories>
+        <category>2023年10月日报</category>
+      </categories>
+      <tags>
+        <tag>日报</tag>
+      </tags>
+  </entry>
 </search>
