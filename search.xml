@@ -1785,4 +1785,18 @@
         <tag>日报</tag>
       </tags>
   </entry>
+  <entry>
+    <title>2023-10-23日报</title>
+    <url>/2023/10/23/%E6%97%A5%E6%8A%A5/2023-10/2023-10-23%E6%97%A5%E6%8A%A5/</url>
+    <content><![CDATA[<h1 id="收获"><a href="#收获" class="headerlink" title="收获"></a>收获</h1><h2 id="web"><a href="#web" class="headerlink" title="web"></a>web</h2><p>学到了定时器,async await,bootstarp框架<br>框架开发非常方便,比手搓好多了</p>
+<h2 id="编译原理"><a href="#编译原理" class="headerlink" title="编译原理"></a>编译原理</h2><p>看懂了first follow select集合的定义和运算<br>判断LL(1)文法的方法</p>
+<h2 id="ebpf"><a href="#ebpf" class="headerlink" title="ebpf"></a>ebpf</h2><p>找到一篇不错的开源文档<a href="https://github.com/eunomia-bpf/bpf-developer-tutorial">https://github.com/eunomia-bpf/bpf-developer-tutorial</a><br>准备跟着示例学了,甚至有一键创建环境我哭死</p>
+]]></content>
+      <categories>
+        <category>2023年10月日报</category>
+      </categories>
+      <tags>
+        <tag>日报</tag>
+      </tags>
+  </entry>
 </search>
