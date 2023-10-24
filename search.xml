@@ -1799,4 +1799,27 @@
         <tag>日报</tag>
       </tags>
   </entry>
+  <entry>
+    <title>2023-10-24日报</title>
+    <url>/2023/10/24/%E6%97%A5%E6%8A%A5/2023-10/2023-10-24%E6%97%A5%E6%8A%A5/</url>
+    <content><![CDATA[<h1 id="收获"><a href="#收获" class="headerlink" title="收获"></a>收获</h1><h2 id="完成polyre"><a href="#完成polyre" class="headerlink" title="完成polyre"></a>完成polyre</h2><p>这题使用到了OLLVM混淆,有平坦化和虚假控制流</p>
+<ol>
+<li>deflat直接使用github项目的脚本即可,参数传入需要解混淆的函数首地址</li>
+<li>去虚假控制流学到个骚操作–直接修改混淆的全局变量为const类型</li>
+<li>最后的加密算法是CRC64<br>算是了解到了CRC64如何逆,并不复杂</li>
+</ol>
+<h2 id="尝试复现N1CTF-N1LLua"><a href="#尝试复现N1CTF-N1LLua" class="headerlink" title="尝试复现N1CTF-N1LLua"></a>尝试复现N1CTF-N1LLua</h2><ol>
+<li>了解到一点点lua逆向知识,代码存储在resources.assets文件中</li>
+<li>可以通过unluac.jar进行解包和反汇编</li>
+<li>这题用lua5.3套了一个lua5.2<br> 外部代码加载内部函数的16进制码并运行<br>明天配置一下lua的环境</li>
+</ol>
+<h2 id="看了下n1go"><a href="#看了下n1go" class="headerlink" title="看了下n1go"></a>看了下n1go</h2><p>好抽象,wp代码复制下来运行不了,代码也看不懂,4万行代码如何手撕是个问题,晚点再看</p>
+]]></content>
+      <categories>
+        <category>2023年10月日报</category>
+      </categories>
+      <tags>
+        <tag>日报</tag>
+      </tags>
+  </entry>
 </search>
