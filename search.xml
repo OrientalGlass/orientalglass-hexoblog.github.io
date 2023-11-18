@@ -2005,4 +2005,20 @@
         <tag>ida插件</tag>
       </tags>
   </entry>
+  <entry>
+    <title>2023-11-18日报</title>
+    <url>/2023/11/18/%E6%97%A5%E6%8A%A5/2023-11/2023-11-18%E6%97%A5%E6%8A%A5/</url>
+    <content><![CDATA[<h1 id="完成任务"><a href="#完成任务" class="headerlink" title="完成任务"></a>完成任务</h1><ol>
+<li><p>编译原理实验4-简单优先分析的实现<br>关键问题在于遇到&gt;关系时查找符号栈的句柄头</p>
+</li>
+<li><p>HECTF ezre和ez_android<br>这两题都不难,一题异或一题安卓动调得到map走迷宫</p>
+</li>
+<li><p>[SWPU2019]EasiestRe<br>这题非常有意思,使用到了双进程技术,借此可以学习调试器的基本原理并制作windwos调试器</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>2023年11月日报</category>
+      </categories>
+  </entry>
 </search>
