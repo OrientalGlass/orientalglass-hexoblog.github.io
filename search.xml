@@ -2097,4 +2097,46 @@
         <tag>日报</tag>
       </tags>
   </entry>
+  <entry>
+    <title>2023-11-25日报</title>
+    <url>/2023/11/27/%E6%97%A5%E6%8A%A5/2023-11/2023-11-25%E6%97%A5%E6%8A%A5/</url>
+    <content><![CDATA[<h1 id="做的事"><a href="#做的事" class="headerlink" title="做的事"></a>做的事</h1><ol>
+<li><p>上午看了下tpctf和dasctf<br>tp的maze是cpython打包的so逆向,很难<br>dasctf逆向四道题感觉都有点思路,可以复现一下<br>其中python逆向题需要修复magic head为3.11<br>在pycdc项目代码中找到了全版本magic head表</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">PycMagic</span> &#123;</span></span><br><span class="line"> MAGIC_1_0 = <span class="number">0x00999902</span>,</span><br><span class="line"> MAGIC_1_1 = <span class="number">0x00999903</span>, <span class="comment">/* Also covers 1.2 */</span></span><br><span class="line"> MAGIC_1_3 = <span class="number">0x0A0D2E89</span>,</span><br><span class="line"> MAGIC_1_4 = <span class="number">0x0A0D1704</span>,</span><br><span class="line"> MAGIC_1_5 = <span class="number">0x0A0D4E99</span>,</span><br><span class="line"> MAGIC_1_6 = <span class="number">0x0A0DC4FC</span>,</span><br><span class="line"></span><br><span class="line"> MAGIC_2_0 = <span class="number">0x0A0DC687</span>,</span><br><span class="line"> MAGIC_2_1 = <span class="number">0x0A0DEB2A</span>,</span><br><span class="line"> MAGIC_2_2 = <span class="number">0x0A0DED2D</span>,</span><br><span class="line"> MAGIC_2_3 = <span class="number">0x0A0DF23B</span>,</span><br><span class="line"> MAGIC_2_4 = <span class="number">0x0A0DF26D</span>,</span><br><span class="line"> MAGIC_2_5 = <span class="number">0x0A0DF2B3</span>,</span><br><span class="line"> MAGIC_2_6 = <span class="number">0x0A0DF2D1</span>,</span><br><span class="line"> MAGIC_2_7 = <span class="number">0x0A0DF303</span>,</span><br><span class="line"></span><br><span class="line"> MAGIC_3_0 = <span class="number">0x0A0D0C3A</span>,</span><br><span class="line"> MAGIC_3_1 = <span class="number">0x0A0D0C4E</span>,</span><br><span class="line"> MAGIC_3_2 = <span class="number">0x0A0D0C6C</span>,</span><br><span class="line"> MAGIC_3_3 = <span class="number">0x0A0D0C9E</span>,</span><br><span class="line"> MAGIC_3_4 = <span class="number">0x0A0D0CEE</span>,</span><br><span class="line"> MAGIC_3_5 = <span class="number">0x0A0D0D16</span>,</span><br><span class="line"> MAGIC_3_5_3 = <span class="number">0x0A0D0D17</span>,</span><br><span class="line"> MAGIC_3_6 = <span class="number">0x0A0D0D33</span>,</span><br><span class="line"> MAGIC_3_7 = <span class="number">0x0A0D0D42</span>,</span><br><span class="line"> MAGIC_3_8 = <span class="number">0x0A0D0D55</span>,</span><br><span class="line"> MAGIC_3_9 = <span class="number">0x0A0D0D61</span>,</span><br><span class="line"> MAGIC_3_10 = <span class="number">0x0A0D0D6F</span>,</span><br><span class="line"> MAGIC_3_11 = <span class="number">0x0A0D0DA7</span>,</span><br><span class="line"> MAGIC_3_12 = <span class="number">0x0A0D0DCB</span>,</span><br><span class="line"></span><br><span class="line"> INVALID = <span class="number">0</span>,</span><br><span class="line"> &#125;;</span><br></pre></td></tr></table></figure></li>
+<li><p>有限域的问题<br>第一次是在鹏城杯2023初赛BabyRe遇到<br>结果Dasctfx0psu3这次比赛的Tetris也和这个算法类似<br>这个逆向还是需要一点密码知识的,感觉得学点密码了</p>
+</li>
+<li><p>下午上党课</p>
+</li>
+<li><p>晚上参加猫和老鼠游戏</p>
+</li>
+</ol>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>日报于11-27 0:19补<br>有空可以总结下python逆向常见套路和基本分享方法了<br>学密码–&lt;密码编码学与网络安全 原理与实践 第七版&gt;这本书好像不错</p>
+]]></content>
+      <categories>
+        <category>2023年11月日报</category>
+      </categories>
+      <tags>
+        <tag>日报</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>2023-11-26日报</title>
+    <url>/2023/11/27/%E6%97%A5%E6%8A%A5/2023-11/2023-11-26%E6%97%A5%E6%8A%A5/</url>
+    <content><![CDATA[<h1 id="做的事"><a href="#做的事" class="headerlink" title="做的事"></a>做的事</h1><ol>
+<li>上党课</li>
+<li>做培训ppt</li>
+<li>参加书法比赛</li>
+<li>培训<br>讲了下花指令,smc,动调</li>
+<li>晚上组会和师傅们交流了一下<br>无意间了解到信工所考研,貌似11408 360的初试分有点搞</li>
+<li>tomcat修复输出编码导致web项目无法正确启动<br>重新配置了一遍tomcat解决,只需要修改log的配置即可,其他配置不能乱改</li>
+</ol>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>今天总的还是比较忙吧,晚上歇了一会,本来想好好做做web,还是浪费掉了<br>回来后还是浪费在看手机上,以及看了会考研资讯,一个半小时调tomcat,最后半小时写文档<br>一定要给自己找事做,不要停</p>
+]]></content>
+      <categories>
+        <category>2023年11月日报</category>
+      </categories>
+      <tags>
+        <tag>日报</tag>
+      </tags>
+  </entry>
 </search>
