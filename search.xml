@@ -2110,7 +2110,7 @@
 <li><p>晚上参加猫和老鼠游戏</p>
 </li>
 </ol>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>日报于11-27 0:19补<br>有空可以总结下python逆向常见套路和基本分享方法了<br>学密码–&lt;密码编码学与网络安全 原理与实践 第七版&gt;这本书好像不错</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>日报于11-27 0:19补<br>有空可以总结下python逆向常见套路和基本分享方法了<br>学密码–&lt;<br>密码编码学与网络安全 原理与实践 第七版&gt;这本书好像不错</p>
 ]]></content>
       <categories>
         <category>2023年11月日报</category>
@@ -2131,6 +2131,52 @@
 <li>tomcat修复输出编码导致web项目无法正确启动<br>重新配置了一遍tomcat解决,只需要修改log的配置即可,其他配置不能乱改</li>
 </ol>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>今天总的还是比较忙吧,晚上歇了一会,本来想好好做做web,还是浪费掉了<br>回来后还是浪费在看手机上,以及看了会考研资讯,一个半小时调tomcat,最后半小时写文档<br>一定要给自己找事做,不要停</p>
+]]></content>
+      <categories>
+        <category>2023年11月日报</category>
+      </categories>
+      <tags>
+        <tag>日报</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>2023-11-20至26周报</title>
+    <url>/2023/11/27/%E6%97%A5%E6%8A%A5/2023-11/2023-11-20%E8%87%B326%E5%91%A8%E6%8A%A5/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>2023-11-27日报</title>
+    <url>/2023/11/27/%E6%97%A5%E6%8A%A5/2023-11/2023-11-27%E6%97%A5%E6%8A%A5/</url>
+    <content><![CDATA[<h1 id="做的事"><a href="#做的事" class="headerlink" title="做的事"></a>做的事</h1><ol>
+<li><p>上午web五节课<br>讲了下servlet的基本使用,感觉内容很多,不过能通过后端申请api获取数据并返回给前端了<br>springboot貌似更简单?速成一波</p>
+</li>
+<li><p>中午开会<br>材料要实事求是结合实际,关键知识点要看看背背</p>
+</li>
+<li><p>下午编译课<br>学了SLR(1)分析,LR(0)分析是根据当前状态和当前输入符号进行判断,可归约状态无论输入符号直接归约<br>SLR(1)分析遇到可归约状态(主要是发生冲突时),要继续判断下一个输入符号选择不同的操作</p>
+</li>
+<li><p>晚上党课</p>
+</li>
+</ol>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>好好睡觉,熬夜+事多简直起飞<br>这两天把笔记和线上学习看看,背点题库和理论,再准备下拟态做点题</p>
+]]></content>
+      <categories>
+        <category>2023年11月日报</category>
+      </categories>
+      <tags>
+        <tag>日报</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>2023-11-28日报</title>
+    <url>/2023/11/28/%E6%97%A5%E6%8A%A5/2023-11/2023-11-28%E6%97%A5%E6%8A%A5/</url>
+    <content><![CDATA[<h1 id="做的事"><a href="#做的事" class="headerlink" title="做的事"></a>做的事</h1><ol>
+<li><p>学了下PHP基础语法(看文档学的,还不够深入)<br>印象比较深的就是字符串连接用.点号进行,php用array()创建数组,foreach 循环,特殊的全局变量例如$_POST,$_GET,$GLOBAL等<br>有时间可以系统看看并总结一波</p>
+</li>
+<li><p>做了靶场的三道web题<br>分别是web basic,命令执行,变量覆盖<br>算是初探web了,basic中主要是对于http请求头功能的认识以及一些抓包拦截操作<br>命令执行也就是将传入的字符串作为命令进行执行<br>变量覆盖则比较特殊,$$开头的变量类似指针,可以引用其他变量</p>
+</li>
+<li><p>党员下寝<br>党员下寝和新生进行了一些简单的交流,四个寝室花了两个小时,过的很快<br>回首看去他们和大一的我很像,初入大学还没有摆脱高中的学生思维,但是又找不到什么具体方向,也不愿意深入了解和研究某个方向(怕难),只是普普通通的参加活动和一些比赛,上课听听在做做作业和练习,成绩也还过得去</p>
+</li>
+</ol>
 ]]></content>
       <categories>
         <category>2023年11月日报</category>
