@@ -767,7 +767,7 @@
 </li>
 <li><p>尽量用面向对象设计<br>这次PVZ修改器的模块设计相对还算可以,功能间都是可以独立调用的,所以并没有什么影响,以后尽量用面向对象设计,舍去那些多余的传参,让hProcess,BaseAddr等关键参数直接内部调用</p>
 </li>
-<li><p>沉下心学习<br>搞qt搞到一半觉得麻烦想去搞mfc,感觉也麻烦,兜兜转转回来了,好在最后还是做出来了,不如沉下心慢慢学</p>
+<li><p>沉下心学习<br>搞qt搞到一半觉得麻烦想去搞mfc,感觉也麻烦,兜兜转转回来了,好在最后还是做出来了,不如沉下心慢慢学<br>qwntcTf_2023_welhaVE_FuN_1234567</p>
 </li>
 </ol>
 ]]></content>
@@ -2199,6 +2199,50 @@
       </categories>
       <tags>
         <tag>日报</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>2023强网拟态-keygen</title>
+    <url>/2023/12/12/%E6%AF%94%E8%B5%9B/2023%E5%BC%BA%E7%BD%91%E6%8B%9F%E6%80%81/2023%E5%BC%BA%E7%BD%91%E6%8B%9F%E6%80%81-keygen/</url>
+    <content><![CDATA[<p>这题java层没什么东西,关键逻辑都在libkeygen.so中</p>
+<h1 id="修改sdkversion"><a href="#修改sdkversion" class="headerlink" title="修改sdkversion"></a>修改sdkversion</h1><p>默认minsdk&#x3D;30(android 11),由于测试机是安卓10,使用apktool解包修改manifast文件</p>
+<p>注意extractNativeLibs要改为true,不然报错<strong>Failed to extract native libraries, res&#x3D;-2</strong></p>
+<p><img src="/2023/12/12/%E6%AF%94%E8%B5%9B/2023%E5%BC%BA%E7%BD%91%E6%8B%9F%E6%80%81/2023%E5%BC%BA%E7%BD%91%E6%8B%9F%E6%80%81-keygen/1_%E8%A7%A3%E5%8C%85%E5%B9%B6%E4%BF%AE%E6%94%B9%E5%B1%9E%E6%80%A7.png" alt="1_解包并修改属性"></p>
+<p>打包新的apk后重签名,再用ida动态调试分析so文件</p>
+<h1 id="initarray"><a href="#initarray" class="headerlink" title="initarray"></a>initarray</h1><p>查看initarray段发现初始化了很多字符串</p>
+<p><img src="/2023/12/12/%E6%AF%94%E8%B5%9B/2023%E5%BC%BA%E7%BD%91%E6%8B%9F%E6%80%81/2023%E5%BC%BA%E7%BD%91%E6%8B%9F%E6%80%81-keygen/2_initarray.png" alt="2_initarray"></p>
+<h1 id="start函数"><a href="#start函数" class="headerlink" title="start函数"></a>start函数</h1><p>前面几个函数做初始化,创建的线程进行输入flag和check</p>
+<p><img src="/2023/12/12/%E6%AF%94%E8%B5%9B/2023%E5%BC%BA%E7%BD%91%E6%8B%9F%E6%80%81/2023%E5%BC%BA%E7%BD%91%E6%8B%9F%E6%80%81-keygen/3_%E4%B8%BB%E5%87%BD%E6%95%B0.png" alt="3_主函数"></p>
+<h1 id="check函数"><a href="#check函数" class="headerlink" title="check函数"></a>check函数</h1><p>貌似是个循环获取输入的操作</p>
+<p><img src="/2023/12/12/%E6%AF%94%E8%B5%9B/2023%E5%BC%BA%E7%BD%91%E6%8B%9F%E6%80%81/2023%E5%BC%BA%E7%BD%91%E6%8B%9F%E6%80%81-keygen/4_input.png" alt="4_input"></p>
+<p>下面有两段check函数</p>
+<p><img src="/2023/12/12/%E6%AF%94%E8%B5%9B/2023%E5%BC%BA%E7%BD%91%E6%8B%9F%E6%80%81/2023%E5%BC%BA%E7%BD%91%E6%8B%9F%E6%80%81-keygen/5_%E4%B8%A4%E6%AE%B5check.png" alt="5_两段check"></p>
+<p>decode函数经分析是rc4,对字符串进行处理后作为key,再对输入数据进行aes加密</p>
+<p>两段check函数中都是aes加密</p>
+<p><img src="/2023/12/12/%E6%AF%94%E8%B5%9B/2023%E5%BC%BA%E7%BD%91%E6%8B%9F%E6%80%81/2023%E5%BC%BA%E7%BD%91%E6%8B%9F%E6%80%81-keygen/6_encode.png" alt="6_encode"></p>
+<p><img src="/2023/12/12/%E6%AF%94%E8%B5%9B/2023%E5%BC%BA%E7%BD%91%E6%8B%9F%E6%80%81/2023%E5%BC%BA%E7%BD%91%E6%8B%9F%E6%80%81-keygen/7_encode2.png" alt="7_encode2"></p>
+<p>sub_c8d10fc8函数跟进去可以看到aes的sbox</p>
+<p><img src="/8_aes%E5%8A%A0%E5%AF%86" alt="image-20231206224058966"></p>
+<p>动调改pc寄存器,执行在<strong>sub_c8d10fc8前的一个decode后,得到aes的key</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">key1: 0x21, 0xCF, 0xCC, 0x68, 0xEA, 0xC5, 0x0A, 0x87, 0xFA, 0x60, 0xDB, 0x52, 0x99, 0xD4, 0xDC, 0x1B</span><br><span class="line">key2: 0xA9, 0x86, 0xC8, 0xC8, 0x5F, 0x57, 0xF8, 0x7E, 0x57, 0x30, 0x69, 0x27, 0xD1, 0x4C, 0x41, 0x5C</span><br></pre></td></tr></table></figure>
+
+<p>赛博厨子嗦一下</p>
+<p><img src="/2023/12/12/%E6%AF%94%E8%B5%9B/2023%E5%BC%BA%E7%BD%91%E6%8B%9F%E6%80%81/2023%E5%BC%BA%E7%BD%91%E6%8B%9F%E6%80%81-keygen/8_flag1.png" alt="8_flag1"></p>
+<p><img src="/2023/12/12/%E6%AF%94%E8%B5%9B/2023%E5%BC%BA%E7%BD%91%E6%8B%9F%E6%80%81/2023%E5%BC%BA%E7%BD%91%E6%8B%9F%E6%80%81-keygen/9_flag2.png" alt="9_flag2"></p>
+<p>得到<strong>flag{834394be352d420b91e164fcb1346f74}</strong></p>
+<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>值得一提的是程序跑起来可能有点问题,表现在decode得到的key不对</p>
+<p>因为decode第一个参数(key)传递的并不是start函数起始地址,而是起始地址+1</p>
+<p><img src="/2023/12/12/%E6%AF%94%E8%B5%9B/2023%E5%BC%BA%E7%BD%91%E6%8B%9F%E6%80%81/2023%E5%BC%BA%E7%BD%91%E6%8B%9F%E6%80%81-keygen/10_%E7%9C%9F%E5%AE%9E%E5%81%8F%E7%A7%BB.png" alt="10_真实偏移"></p>
+<p>这个问题困扰了挺久,调试几个小时结果都不对……</p>
+<p>汇编层面看是+1偏移没问题,跑起来又是从起始地址开始,非常抽象</p>
+]]></content>
+      <categories>
+        <category>2023强网拟态</category>
+      </categories>
+      <tags>
+        <tag>比赛</tag>
+        <tag>Android</tag>
+        <tag>Native</tag>
       </tags>
   </entry>
 </search>
