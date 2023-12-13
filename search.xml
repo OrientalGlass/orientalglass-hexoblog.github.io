@@ -2245,4 +2245,20 @@
         <tag>Native</tag>
       </tags>
   </entry>
+  <entry>
+    <title>2023-12-13日报</title>
+    <url>/2023/12/13/%E6%97%A5%E6%8A%A5/2023-12/2023-12-13%E6%97%A5%E6%8A%A5/</url>
+    <content><![CDATA[<h1 id="今日总结"><a href="#今日总结" class="headerlink" title="今日总结"></a>今日总结</h1><ol>
+<li>学习了go的数组和切片基础</li>
+<li>试着qemu用户模式的基本使用</li>
+<li>xposed,frida官方文档值得研究</li>
+</ol>
+]]></content>
+      <categories>
+        <category>2023年12月日报</category>
+      </categories>
+      <tags>
+        <tag>日报</tag>
+      </tags>
+  </entry>
 </search>
