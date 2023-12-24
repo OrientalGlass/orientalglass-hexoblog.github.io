@@ -397,25 +397,6 @@
       </categories>
   </entry>
   <entry>
-    <title>2023-08-22日报</title>
-    <url>/2023/08/22/%E6%97%A5%E6%8A%A5/2023-08/2023-08-22%E6%97%A5%E6%8A%A5/</url>
-    <content><![CDATA[<h1 id="今日收获"><a href="#今日收获" class="headerlink" title="今日收获"></a>今日收获</h1><h2 id="一-利用GitHubPage搭建了个人博客"><a href="#一-利用GitHubPage搭建了个人博客" class="headerlink" title="一. 利用GitHubPage搭建了个人博客"></a>一. 利用GitHubPage搭建了个人博客</h2><p>   博客用到了hexo框架和butterfly主题美化<br>   参考资料:<br>   <a href="https://blog.juanertu.com/archives/e3dc5cbb.html">Hexo 框架 (一)：使用 Hexo 快速搭建个人博客</a><br>   <a href="https://butterfly.js.org/posts/4aa8abbe/#%E4%BB%A3%E7%A2%BC%E9%AB%98%E4%BA%AE%E4%B8%BB%E9%A1%8C">Butterfly 安装文档(三) 主题配置</a><br>   <a href="https://hexo.io/zh-cn/docs/">Hexo官方文档</a></p>
-<h2 id="二-Andorid使用Intent进行活动跳转"><a href="#二-Andorid使用Intent进行活动跳转" class="headerlink" title="二. Andorid使用Intent进行活动跳转"></a>二. Andorid使用Intent进行活动跳转</h2><p>Intent跳转分为显示跳转和隐式跳转</p>
-<ol>
-<li>显式跳转<br>显式跳转顾名思义显式的在代码中进行跳转<br>关键代码<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Button button1=(Button)findViewById(R.id.Button1);</span><br><span class="line">    button1.setOnClickListener(<span class="keyword">new</span> <span class="title class_">View</span>.OnClickListener() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onClick</span><span class="params">(View v)</span> &#123;<span class="comment">//显式intent 很明显可以看到跳转逻辑</span></span><br><span class="line">            Intent intent=<span class="keyword">new</span> <span class="title class_">Intent</span>(MainActivity.<span class="built_in">this</span>,SecondActivity.class);</span><br><span class="line">            startActivity(intent);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure></li>
-<li>隐式跳转<br>隐式跳转需要在AndoridManifest文件中,给活动的intent-filter中设置action和categories<br>每个intent只能指定一个action,可以指定多个categories<br>必须所有指定的action和categories都匹配成功才能跳转<br>关键代码<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Button button2=(Button)findViewById(R.id.Button2);</span><br><span class="line">     button2.setOnClickListener(<span class="keyword">new</span> <span class="title class_">View</span>.OnClickListener() &#123;</span><br><span class="line">         <span class="meta">@Override</span></span><br><span class="line">         <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onClick</span><span class="params">(View v)</span> &#123;</span><br><span class="line">             <span class="comment">//每个intent只能指定一个action</span></span><br><span class="line">             Intent intent=<span class="keyword">new</span> <span class="title class_">Intent</span>(<span class="string">&quot;com.example.MainActivity.ACTION_START&quot;</span>);</span><br><span class="line">             <span class="comment">//可以指定多个category</span></span><br><span class="line">             intent.addCategory(<span class="string">&quot;android.intent.category.DEFAULT&quot;</span>);</span><br><span class="line">             startActivity(intent);</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;);</span><br></pre></td></tr></table></figure>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">             <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">&quot;com.example.MainActivity.ACTION_START&quot;</span>/&gt;</span></span><br><span class="line">             <span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">&quot;android.intent.category.DEFAULT&quot;</span> /&gt;</span></span><br><span class="line">         <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
-</ol>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>搭建个人博客方便分类归纳整理文章,本地管理还是有点乱<br>今天起得比较晚,希望晚上睡早一点明天早起<br>今天主要就是搭建博客,明天需要复现题目以及写CS修改器<br>2023-08-22在此立下Flag以后坚持写日报</p>
-]]></content>
-      <categories>
-        <category>2023年8月日报</category>
-      </categories>
-      <tags>
-        <tag>日报</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>JNI函数静态注册和动态注册</title>
     <url>/2023/08/22/Android/NDK/JNI%E5%88%9D%E6%8E%A2/</url>
     <content><![CDATA[<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ol>
@@ -619,41 +600,6 @@
       </tags>
   </entry>
   <entry>
-    <title>2023-08-23日报</title>
-    <url>/2023/08/23/%E6%97%A5%E6%8A%A5/2023-08/2023-08-23%E6%97%A5%E6%8A%A5/</url>
-    <content><![CDATA[<h1 id="今日收获"><a href="#今日收获" class="headerlink" title="今日收获"></a>今日收获</h1><h2 id="一-回顾了安卓简易计算器开发"><a href="#一-回顾了安卓简易计算器开发" class="headerlink" title="一. 回顾了安卓简易计算器开发"></a>一. 回顾了安卓简易计算器开发</h2><p>之前学习安卓开发时已经做得差不多,但是java层代码实现有点不太理解就慢慢忘了,今天跟着教学视频继续实现了一下并且做了一些修改</p>
-<p>可以给一个类设置为多个按钮的监听器,要注意实现接口和对应方法<br>java的一些数据类型转换方法例如:<br>**Double.parseDouble()**可以将字符串转换为Double类型<br>可以将字符串,颜色,大小等参数写到特定的xml文件中,后期修改维护比较方便<br>安卓引用的图片名不能有中文,引用时直接输入图片名即可,不需要带文件后缀</p>
-<h2 id="二-so附加调试可以直接查找模块"><a href="#二-so附加调试可以直接查找模块" class="headerlink" title="二. so附加调试可以直接查找模块"></a>二. so附加调试可以直接查找模块</h2><p>不使用数据库文件,直接附加调试,搜索模块名</p>
-<p><img src="/2023/08/23/%E6%97%A5%E6%8A%A5/2023-08/2023-08-23%E6%97%A5%E6%8A%A5/%E9%99%84%E5%8A%A0%E8%B0%83%E8%AF%95%E6%9F%A5%E6%89%BE%E6%A8%A1%E5%9D%97.png" alt="附加调试查找模块"></p>
-<p>拿到搜索到模块后点击模块可以看到模块的函数列表,点击之后可以查看函数</p>
-<p><img src="/2023/08/23/%E6%97%A5%E6%8A%A5/2023-08/2023-08-23%E6%97%A5%E6%8A%A5/%E7%82%B9%E5%87%BB%E6%A8%A1%E5%9D%97%E5%87%BD%E6%95%B0%E5%8D%B3%E5%8F%AF%E6%9F%A5%E7%9C%8B.png" alt="点击模块函数即可查看"></p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>可能是最近睡得比较晚以及想的太多,今天起得晚还没什么精神,一天也没做多少东西<br>急也没用哈哈哈,把握好现有基本盘稳扎稳打,放平心态不要被影响目标干就完了</p>
-]]></content>
-      <categories>
-        <category>2023年8月日报</category>
-      </categories>
-      <tags>
-        <tag>日报</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>2023-08-26日报</title>
-    <url>/2023/08/26/%E6%97%A5%E6%8A%A5/2023-08/2023-08-26%E6%97%A5%E6%8A%A5/</url>
-    <content><![CDATA[<h1 id="收获"><a href="#收获" class="headerlink" title="收获"></a>收获</h1><ol>
-<li>蓝帽杯初赛,成功晋级半决赛</li>
-<li>安装了取证大师,对取证有了初步了解</li>
-<li>看了一下frida native层hook基础</li>
-</ol>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>24,25休息了两天,调整了一下心态<br>今天的蓝帽杯逆向题属实极端,一个直接给flag,另一个没什么工具下手<br>总的来说今天做的事并不是很多,下午不该继续看瓷砖计算机,浪费了时间</p>
-]]></content>
-      <categories>
-        <category>2023年8月日报</category>
-      </categories>
-      <tags>
-        <tag>日报</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>SMC</title>
     <url>/2023/08/27/Reverse/%E9%80%86%E5%90%91%E6%8A%80%E6%9C%AF/SMC/</url>
     <content><![CDATA[<h1 id="SMC（Self-Modified-Code）"><a href="#SMC（Self-Modified-Code）" class="headerlink" title="SMC（Self-Modified Code）"></a>SMC（Self-Modified Code）</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p><strong>自修改代码</strong>（Self-Modified Code）是一类特殊的代码技术，即<strong>在运行时修改自身代码</strong>，从而使得程序实际行为与反汇编结果不符，同时修改前的代码段数据也可能非合法指令，从而无法被反汇编器识别，这加大了软件逆向工程的难度。</p>
@@ -716,69 +662,6 @@
       </tags>
   </entry>
   <entry>
-    <title>2023-08-27日报</title>
-    <url>/2023/08/27/%E6%97%A5%E6%8A%A5/2023-08/2023-08-27%E6%97%A5%E6%8A%A5/</url>
-    <content><![CDATA[<h1 id="收获"><a href="#收获" class="headerlink" title="收获"></a>收获</h1><h2 id="一-SMC编程"><a href="#一-SMC编程" class="headerlink" title="一. SMC编程"></a>一. SMC编程</h2><p>蓝帽杯Story这题漏了源码,其中就有SMC的操作,比较好奇为什么源码中没有给出加密后的函数,而是直接对函数进行解密操作<br>制作一个smc程序首先要明确smc的基本过程:</p>
-<ol>
-<li>获取关键函数func的地址</li>
-<li>解密关键函数func</li>
-<li>调用func</li>
-</ol>
-<p>制作一个smc程序的思路:</p>
-<ol>
-<li>编写关键函数func,在main函数中编写解密代码<br>此时func并未加密</li>
-<li>编译,ida查找func的地址及其大小</li>
-<li>idapython对func函数进行加密(和1中的解密可以互逆)</li>
-<li>保存patch后的程序,运行该程序即可解密并执行</li>
-</ol>
-<p>遇到了一个神奇的问题: debug模式下获取func函数地址并不能直接获取到,而是会拿到一个j_func的地址,这是一个jmp指令,用于跳转到真实func地址<br>所以制作时还要注意换算成真实func地址</p>
-<h2 id="二-回顾了Frida-Java层主动调用-写了Native基础Hook"><a href="#二-回顾了Frida-Java层主动调用-写了Native基础Hook" class="headerlink" title="二. 回顾了Frida Java层主动调用,写了Native基础Hook"></a>二. 回顾了Frida Java层主动调用,写了Native基础Hook</h2><p>Java层可以用Java.choose获取类的实例对象,获取之后可以执行各种操作,感觉Java.use能做到的Java.choose都可以做到</p>
-<p>静态成员和方法可以通过Java.use获取到的类直接调用<br>实例成员和方法必须通过Java.choose获取和调用<br>注意变量的值需要用.value获取,变量本身也是引用类型,是一个地址</p>
-<p>Nativehook的基础是使用Interceptor.attach() API<br>关键就是获取Native层函数的地址<br>静态注册的函数hook并不难,直接找模块名,函数名就可以获取到函数地址<br>动态注册的函数需要获取相对基地址的偏移,今天没有做出来,示例脚本有点问题</p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>smc是临时起意想做的,出现了一些问题并成功解决<br>回顾frida java层hook时试了一下书上没有的操作<br>多加入自己的思考去学习</p>
-]]></content>
-      <categories>
-        <category>2023年8月日报</category>
-      </categories>
-      <tags>
-        <tag>日报</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>2023-08-29日报</title>
-    <url>/2023/08/29/%E6%97%A5%E6%8A%A5/2023-08/2023-08-29%E6%97%A5%E6%8A%A5/</url>
-    <content><![CDATA[<h1 id="收获"><a href="#收获" class="headerlink" title="收获"></a>收获</h1><h2 id="一-ADB远程调试"><a href="#一-ADB远程调试" class="headerlink" title="一.ADB远程调试"></a>一.ADB远程调试</h2><p>部分系统自带adb远程调试开关,没有带的话可以安装一个WIFI ADB<br>adb connect ip:port即可连接<br>手机模拟器可以改为桥接模式进行远程调试,注意要设置好ip</p>
-<h2 id="二-Smali基础"><a href="#二-Smali基础" class="headerlink" title="二.Smali基础"></a>二.Smali基础</h2><p>学习了Smali数据类型和基本结构以及基本指令<br>数据类型有基本类型和引用类型<br>结构主要是开头三行信息,.field变量声明 .method方法段<br>基本指令有 const声明常量 invoke调用方法 move赋值 if-[condition]分支判断</p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>昨天卡在了一个Native层动态注册函数的hook,推测是机子的问题,下单了pixel<br>native动态注册函数hook关键是找到JNI_OnLoad中调用的RegisterNatives方法,hook该方法的methods参数可以获取到注册的函数的地址,从而计算出函数的RVA<br>今天的app破解实战也有点问题,示例程序app不弹窗,objection一开始可以带插件注入然后又不行<br>以后用frida还是linux环境比较好,今天装wallbreaker插件在win环境有问题</p>
-]]></content>
-      <categories>
-        <category>2023年8月日报</category>
-      </categories>
-      <tags>
-        <tag>日报</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>2023-08-30日报</title>
-    <url>/2023/08/30/%E6%97%A5%E6%8A%A5/2023-08/2023-08-30%E6%97%A5%E6%8A%A5/</url>
-    <content><![CDATA[<h1 id="收获"><a href="#收获" class="headerlink" title="收获"></a>收获</h1><h2 id="QT实现PVZ修改器图形化"><a href="#QT实现PVZ修改器图形化" class="headerlink" title="QT实现PVZ修改器图形化"></a>QT实现PVZ修改器图形化</h2><p>QT的机制并没有想的那么复杂,只是之前没沉下心学<br>今天成功将PVZ修改器代码移植到QT上并实现图形化<br>遇到了强转的问题 用 <strong>reinterpret_cast &lt;quintptr &gt;</strong> 成功解决QT64位下不允许LPVOID类型强转到DWORD的问题<br>一些控件功能靠查询和GPT得到</p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ol>
-<li><p>编程要更加标准化<br>像BaseAddr基址就应该用LPVOID类型而不是DWORD 今天移植起来发现了不少编程设计方面的问题</p>
-</li>
-<li><p>尽量用面向对象设计<br>这次PVZ修改器的模块设计相对还算可以,功能间都是可以独立调用的,所以并没有什么影响,以后尽量用面向对象设计,舍去那些多余的传参,让hProcess,BaseAddr等关键参数直接内部调用</p>
-</li>
-<li><p>沉下心学习<br>搞qt搞到一半觉得麻烦想去搞mfc,感觉也麻烦,兜兜转转回来了,好在最后还是做出来了,不如沉下心慢慢学<br>qwntcTf_2023_welhaVE_FuN_1234567</p>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>2023年8月日报</category>
-      </categories>
-      <tags>
-        <tag>日报</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>PVZ修改器QT图形化</title>
     <url>/2023/08/30/GameReverse/PlantsVsZombies/PVZ%E4%BF%AE%E6%94%B9%E5%99%A8QT%E5%9B%BE%E5%BD%A2%E5%8C%96/</url>
     <content><![CDATA[<p>成功将PVZ修改器代码移植到QT上,也遇到了不少问题<br>对于QT还只是基本了解,做了一点基本的点击和选择功能,其深层次的原理还值得考究</p>
@@ -795,81 +678,6 @@
       <categories>
         <category>GameReverse</category>
       </categories>
-  </entry>
-  <entry>
-    <title>2023-08-31日报</title>
-    <url>/2023/08/31/%E6%97%A5%E6%8A%A5/2023-08/2023-08-31%E6%97%A5%E6%8A%A5/</url>
-    <content><![CDATA[<h1 id="收获"><a href="#收获" class="headerlink" title="收获"></a>收获</h1><h2 id="硬盘备份和系统迁移"><a href="#硬盘备份和系统迁移" class="headerlink" title="硬盘备份和系统迁移"></a>硬盘备份和系统迁移</h2><h3 id="硬盘备份"><a href="#硬盘备份" class="headerlink" title="硬盘备份"></a>硬盘备份</h3><p>使用傲梅轻松备份,将新硬盘装进硬盘盒,备份原硬盘数据到新硬盘中<br>换下原硬盘,将新硬盘插回原硬盘插槽,启动后注意调整盘符即可<br>如果不调整盘符可能会导致部分软件路径出错从而无法使用</p>
-<h3 id="系统迁移"><a href="#系统迁移" class="headerlink" title="系统迁移"></a>系统迁移</h3><p>系统迁移采用的是diskginus的系统迁移功能<br>非常便捷,建议采用pe模式更加安全<br>系统迁移是将系统盘复制到新的硬盘,将复制好的新硬盘换到老硬盘插槽上<br>启动时进bios调整启动盘选项为新的硬盘即可成功进入系统<br>这步可能会导致引导出错</p>
-<h2 id="Native层动态函数hook"><a href="#Native层动态函数hook" class="headerlink" title="Native层动态函数hook"></a>Native层动态函数hook</h2><h3 id="HookRegisterNatives"><a href="#HookRegisterNatives" class="headerlink" title="HookRegisterNatives"></a>HookRegisterNatives</h3><p>书上用这个脚本成功输出RegisterNatives方法注册的函数信息<br>我当时遇到了一个问题是不能用spawn模式调试软件,今天发现是frida和安卓版本不匹配,安卓10应该用frida15<br>今天正好买的pixel3xl到了,刷安卓9用frida14成功运行脚本<br>但是这个github上下的脚本有点问题,于是自己修改了一下<br>比较重要的就是DebugSymbol模块的api,需要利用一些信息获取模块基址</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//查找RegisterNatives函数</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">find_RegisterNatives</span>(<span class="params"></span>) &#123;</span><br><span class="line">   <span class="keyword">var</span> symbols = <span class="title class_">Module</span>.<span class="title function_">enumerateSymbolsSync</span>(<span class="string">&quot;libart.so&quot;</span>);<span class="comment">//枚举符号</span></span><br><span class="line">   <span class="keyword">var</span> addrRegisterNatives = <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; symbols.<span class="property">length</span>; i++) &#123;</span><br><span class="line">       <span class="keyword">var</span> symbol = symbols[i];</span><br><span class="line">        <span class="comment">//匹配目标方法特征</span></span><br><span class="line">        <span class="comment">//_ZN3art3JNI15RegisterNativesEP7_JNIEnvP7_jclassPK15JNINativeMethodi</span></span><br><span class="line">        <span class="keyword">if</span> (symbol.<span class="property">name</span>.<span class="title function_">indexOf</span>(<span class="string">&quot;art&quot;</span>) &gt;= <span class="number">0</span> &amp;&amp;</span><br><span class="line">                symbol.<span class="property">name</span>.<span class="title function_">indexOf</span>(<span class="string">&quot;JNI&quot;</span>) &gt;= <span class="number">0</span> &amp;&amp; </span><br><span class="line">                symbol.<span class="property">name</span>.<span class="title function_">indexOf</span>(<span class="string">&quot;RegisterNatives&quot;</span>) &gt;= <span class="number">0</span> &amp;&amp; </span><br><span class="line">                symbol.<span class="property">name</span>.<span class="title function_">indexOf</span>(<span class="string">&quot;CheckJNI&quot;</span>) &lt; <span class="number">0</span>) &#123;</span><br><span class="line">            addrRegisterNatives = symbol.<span class="property">address</span><span class="comment">//成功找到函数地址</span></span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;RegisterNatives is at &quot;</span>, symbol.<span class="property">address</span>, symbol.<span class="property">name</span>);</span><br><span class="line">            <span class="title function_">hook_RegisterNatives</span>(addrRegisterNatives)<span class="comment">//hook函数</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">hook_RegisterNatives</span>(<span class="params">addrRegisterNatives</span>) &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (addrRegisterNatives != <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="title class_">Interceptor</span>.<span class="title function_">attach</span>(addrRegisterNatives, &#123;</span><br><span class="line">            <span class="attr">onEnter</span>: <span class="keyword">function</span> (<span class="params">args</span>) &#123;</span><br><span class="line">               <span class="keyword">var</span> vm=args[<span class="number">0</span>]<span class="comment">//vm</span></span><br><span class="line">               <span class="keyword">var</span> clazz = args[<span class="number">1</span>]<span class="comment">//clazz</span></span><br><span class="line">               <span class="keyword">var</span> methods = <span class="title function_">ptr</span>(args[<span class="number">2</span>])<span class="comment">//methods数组 引用类型 ptr转换</span></span><br><span class="line">               <span class="keyword">var</span> methods_count = <span class="built_in">parseInt</span>(args[<span class="number">3</span>])<span class="comment">//methods元素个数 即动态注册函数个数</span></span><br><span class="line">               <span class="keyword">var</span> class_name = <span class="title class_">Java</span>.<span class="property">vm</span>.<span class="title function_">tryGetEnv</span>().<span class="title function_">getClassName</span>(clazz)<span class="comment">//类名</span></span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;\nvm=&quot;</span>,vm,<span class="string">&quot;\nmethods count=&quot;</span>,methods_count,<span class="string">&quot;\n[RegisterNatives]&quot;</span>)</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; methods_count; i++) &#123;</span><br><span class="line">                    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`==========Func<span class="subst">$&#123;i&#125;</span>==========`</span>)</span><br><span class="line">                   <span class="keyword">var</span> pFuncName = <span class="title class_">Memory</span>.<span class="title function_">readPointer</span>(methods.<span class="title function_">add</span>(i * <span class="title class_">Process</span>.<span class="property">pointerSize</span> * <span class="number">3</span>))</span><br><span class="line">                   <span class="keyword">var</span> pSignature = <span class="title class_">Memory</span>.<span class="title function_">readPointer</span>(methods.<span class="title function_">add</span>(i * <span class="title class_">Process</span>.<span class="property">pointerSize</span> * <span class="number">3</span> + <span class="title class_">Process</span>.<span class="property">pointerSize</span>))</span><br><span class="line">                   </span><br><span class="line">                   <span class="keyword">var</span> funcName = <span class="title class_">Memory</span>.<span class="title function_">readCString</span>(pFuncName)<span class="comment">//Java层函数名</span></span><br><span class="line">                   <span class="keyword">var</span> signature = <span class="title class_">Memory</span>.<span class="title function_">readCString</span>(pSignature)<span class="comment">//函数签名</span></span><br><span class="line">                   <span class="keyword">var</span> fnPtr = <span class="title class_">Memory</span>.<span class="title function_">readPointer</span>(methods.<span class="title function_">add</span>(i * <span class="title class_">Process</span>.<span class="property">pointerSize</span> * <span class="number">3</span> + <span class="title class_">Process</span>.<span class="property">pointerSize</span> * <span class="number">2</span>))<span class="comment">//函数指针</span></span><br><span class="line">                   </span><br><span class="line">                   <span class="keyword">var</span> debug_symbol = <span class="title class_">DebugSymbol</span>.<span class="title function_">fromAddress</span>(fnPtr)<span class="comment">//通过函数地址获取对应符号信息</span></span><br><span class="line">                   <span class="keyword">var</span> moduleName=debug_symbol.<span class="property">moduleName</span></span><br><span class="line">                   <span class="keyword">var</span> moduleAddr=<span class="title class_">Module</span>.<span class="title function_">findBaseAddress</span>(moduleName)<span class="comment">//获取模块基址</span></span><br><span class="line">                   <span class="keyword">var</span> funcOffset=fnPtr-moduleAddr<span class="comment">//计算偏移值</span></span><br><span class="line"></span><br><span class="line">                   <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;clazz=&quot;</span>,class_name,<span class="string">&quot;\nModuleName=&quot;</span>,moduleName,<span class="string">&quot;\nModuleAddr=&quot;</span>,moduleAddr,<span class="string">&quot;\nFuncName=&quot;</span>,funcName,<span class="string">&quot;\nSignature=&quot;</span>,signature,<span class="string">&quot;\nFuncAddr=&quot;</span>,fnPtr,<span class="string">&quot;\nFuncOffset=&quot;</span>,funcOffset.<span class="title function_">toString</span>(<span class="number">16</span>))</span><br><span class="line">                   <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;====================&quot;</span>)</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">setImmediate</span>(find_RegisterNatives)</span><br></pre></td></tr></table></figure>
-
-<h3 id="hook动态注册函数"><a href="#hook动态注册函数" class="headerlink" title="hook动态注册函数"></a>hook动态注册函数</h3><p>用Interceprot.attach方法<br>关键是获取到函数地址,上面用hookRegisterNatives函数得到注册函数偏移值后可以用基址加偏移的方式得到真实地址</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//2. 动态注册函数hook</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">hook_dynamic</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">var</span> libaddr=<span class="title class_">Module</span>.<span class="title function_">findBaseAddress</span>(<span class="string">&quot;libnativetest1.so&quot;</span>)</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;libAddr=&quot;</span>,libaddr)</span><br><span class="line">    <span class="keyword">var</span> <span class="title class_">FuncAddr</span>=libaddr.<span class="title function_">add</span>(<span class="number">0x1edcc</span>)</span><br><span class="line">    <span class="title class_">Interceptor</span>.<span class="title function_">attach</span>(<span class="title class_">FuncAddr</span>,&#123;</span><br><span class="line">        <span class="attr">onEnter</span>:<span class="keyword">function</span>(<span class="params">args</span>)&#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;jnienv=&#x27;</span>,args[<span class="number">0</span>])</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;jobj=&#x27;</span>,args[<span class="number">1</span>])</span><br><span class="line"></span><br><span class="line">        &#125;,<span class="attr">onLeave</span>:<span class="keyword">function</span>(<span class="params">retVal</span>)&#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;retVal=&#x27;</span>,<span class="title class_">Java</span>.<span class="property">vm</span>.<span class="title function_">getEnv</span>().<span class="title function_">getStringUtfChars</span>(retVal,<span class="literal">null</span>).<span class="title function_">readCString</span>())</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">main</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="title function_">hook_dynamic</span>()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="title function_">setImmediate</span>(main)</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>2023年8月日报</category>
-      </categories>
-      <tags>
-        <tag>日报</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>2023-09-01日报</title>
-    <url>/2023/09/01/%E6%97%A5%E6%8A%A5/2023-09/2023-09-01%E6%97%A5%E6%8A%A5/</url>
-    <content><![CDATA[<h1 id="收获"><a href="#收获" class="headerlink" title="收获"></a>收获</h1><h2 id="objection实战"><a href="#objection实战" class="headerlink" title="objection实战"></a>objection实战</h2><h3 id="objection主动调用"><a href="#objection主动调用" class="headerlink" title="objection主动调用"></a>objection主动调用</h3><p>无参调用<br>android heap execute handle methodname<br>有参函数调用<br>android heap evaluate handle<br>输入想要执行的脚本会自动执行</p>
-<h3 id="分析恶意app1"><a href="#分析恶意app1" class="headerlink" title="分析恶意app1"></a>分析恶意app1</h3><p>该恶意app会禁止USB调试,所以adb的usb调试模式无效<br>但是意外发现adb的wifi调试不受影响<br>adb可以正常进入app的shell并强制关闭</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">adb shell am force-stop &lt;package_name&gt;</span><br></pre></td></tr></table></figure>
-<p>objection基本思路</p>
-<ol>
-<li><p>列出activity和service<br>这步主要是为了得到哪些活动或服务在运行</p>
-</li>
-<li><p>hook类所有方法<br>hook类所有方法后可以得知是哪些函数在被调用,从而定位关键函数</p>
-</li>
-<li><p>hook关键函数<br>hook关键函数可以得到函数参数返回值和调用栈<br>通过调用栈可以知道调用关系从而查找相关函数</p>
-</li>
-</ol>
-<h2 id="app分析破解实战"><a href="#app分析破解实战" class="headerlink" title="app分析破解实战"></a>app分析破解实战</h2><h3 id="去除未加固app升级弹窗"><a href="#去除未加固app升级弹窗" class="headerlink" title="去除未加固app升级弹窗"></a>去除未加固app升级弹窗</h3><p>分析应当从开发者的角度思考<br>弹窗有三种常见的实现:</p>
-<ol>
-<li>android.app.Dialog</li>
-<li>android.app.AlertDialog</li>
-<li>android.widget.PopupWindow<br>所以可以在内存中搜索这三种实例,如果找到可以hook对应类,从而定位关键函数</li>
-</ol>
-<p>如果有需求还可以让程序加载时hook函数<br>在objection explore参数后跟-s “命令”即可在app加载时进行hook </p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">objection -g com.app.pkgname explore -s &quot;android hooking watch class android.app.Dialog&quot;</span><br></pre></td></tr></table></figure>
-<p>这种加载时hook很适合加载时调用了onCreate等初始化方法创建后不再调用的类</p>
-<p>找到关键函数后可以反编译修改smali文件,重打包后需要进行签名才能安装</p>
-<h2 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h2><ol>
-<li><p>wallbreaker<br>objectsearch搜索内存实例<br>objectdump打印内存实例的成员</p>
-</li>
-<li><p>frida-dexdump<br>脱壳插件</p>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>2023年9月日报</category>
-      </categories>
-      <tags>
-        <tag>日报</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>2023-09-02日报</title>
-    <url>/2023/09/02/%E6%97%A5%E6%8A%A5/2023-09/2023-09-02%E6%97%A5%E6%8A%A5/</url>
-    <content><![CDATA[<h1 id="收获"><a href="#收获" class="headerlink" title="收获"></a>收获</h1><h2 id="KCTF-AliCrackme-1"><a href="#KCTF-AliCrackme-1" class="headerlink" title="KCTF AliCrackme_1"></a>KCTF AliCrackme_1</h2><p>这题只需要简单的hook一下java层关键函数就可以得到映射表和加密字符串,很容易反推出flag<br>crackme_2是一个so层带反调试的app,没有找到反调试点在哪,顺着逻辑走是假flag 发现了tea加密</p>
-<h2 id="羊城杯2023"><a href="#羊城杯2023" class="headerlink" title="羊城杯2023"></a>羊城杯2023</h2><p>做出来Blast和CSGO这两题<br>Blast是md5(md5()),有一大坨无意义的混淆,看关键代码<br>CSGO的go语言并不复杂,动调一下就可以看到密文比较逻辑<br>ezAndroid的so可能有反调试,比较奇怪的是OnClick方法居然能native化,一直以为只能java层定义<br>也有可能解密文件更换了dex(猜测)<br>vm_wo是虚拟保护,但是架构比较特殊,angr不能跑</p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ol>
-<li><p>一些以前没有在意的基础性的东西还是要好好总结一下,<br>今天甚至才发现买来的pixel3xl没有设置ro.debuggable<br>对于so层调试,idapython的使用等基操得练练</p>
-</li>
-<li><p>比赛题目也需要多总结多复现<br>最近的比赛很明显能发现考察混淆,加密算法,go逆向,VMP等<br>这些常见比赛题型还是很有价值的,尤其是vmp,手搓虚拟机解释器的人他不帅吗</p>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>2023年9月日报</category>
-      </categories>
-      <tags>
-        <tag>日报</tag>
-      </tags>
   </entry>
   <entry>
     <title>IDAPython基本使用</title>
@@ -983,33 +791,6 @@
       </categories>
       <tags>
         <tag>IDAPython</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>2023-09-03日报</title>
-    <url>/2023/09/03/%E6%97%A5%E6%8A%A5/2023-09/2023-09-03%E6%97%A5%E6%8A%A5/</url>
-    <content><![CDATA[<h1 id="收获"><a href="#收获" class="headerlink" title="收获"></a>收获</h1><p>系统学习了IDAPython的基本语法<br>IDAPython拥有调试功能,可以实现一些骚操作<br>以后做题目多试着用IDAPython提取数据和patch加深印象</p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>今天上午搬书去了,下午给靶场出了两道简单题,<br>晚上才学了点东西,明天就正式开始上学了,还得加油复现羊城杯的题</p>
-]]></content>
-      <categories>
-        <category>2023年9月日报</category>
-      </categories>
-      <tags>
-        <tag>日报</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>2023-09-04日报</title>
-    <url>/2023/09/04/%E6%97%A5%E6%8A%A5/2023-09/2023-09-04%E6%97%A5%E6%8A%A5/</url>
-    <content><![CDATA[<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>今天开学第一天,课比较多加上昨晚没睡好今天很没精神,一天也没学多少东西<br>回顾了下js基础语法和html,web前端作业感觉挺麻烦,希望以后学的后端省点事</p>
-<p>AliCrackme_2这题的反调试引出了一个问题:安卓常见反调试技术以及如何反反调试<br>明天准备学习一下安卓反调试技术,尝试复现vm_wo(先了解虚拟执行基本原理,尝试写一个简单的虚拟执行程序)</p>
-<p>学校的课程还是一如既往的没什么用,还是得自学,多做笔记,有点后悔之前学web没做笔记了</p>
-]]></content>
-      <categories>
-        <category>2023年9月日报</category>
-      </categories>
-      <tags>
-        <tag>日报</tag>
       </tags>
   </entry>
   <entry>
@@ -1127,57 +908,6 @@
       </categories>
   </entry>
   <entry>
-    <title>Tue Sep 05 2023 08:00:00 GMT+0800 (中国标准时间)</title>
-    <url>/2023/09/05/%E6%97%A5%E6%8A%A5/2023-09/2023-09-05%E6%97%A5%E6%8A%A5/</url>
-    <content><![CDATA[<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>上午上课确实很无聊,带了电脑想学一学安卓反调试技术,感觉没学到什么<br>后来又去做了alicrackme2,没做出来<br>下午继续看了一下午,晚上问了下宽哥,最后推测是安卓版本问题,app目标sdk19(安卓4.4),希望明天pixel1刷安卓7能跑</p>
-<p>以后可以学学linux管道符,感觉很方便<br>C盘复制之后需要修复引导</p>
-]]></content>
-      <categories>
-        <category>2023年9月日报</category>
-      </categories>
-      <tags>
-        <tag>日报</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>2023-09-06日报</title>
-    <url>/2023/09/06/%E6%97%A5%E6%8A%A5/2023-09/2023-09-06%E6%97%A5%E6%8A%A5/</url>
-    <content><![CDATA[<h1 id="收获"><a href="#收获" class="headerlink" title="收获"></a>收获</h1><h2 id="安洵杯-2019-crackMe"><a href="#安洵杯-2019-crackMe" class="headerlink" title="[安洵杯 2019]crackMe"></a>[安洵杯 2019]crackMe</h2><p>上午看了一会安洵杯2019的crackme 感觉这题的Hook Messagebox和VEH异常处理很是巧妙<br>推测hook是IAT hook,找到导入函数地址表中的导入函数地址并修改 正好借此机会学学IAT HOOK(感觉可以总结一下常见HOOK技术了)<br>VEH机制相关文章<br><a href="http://www.youngroe.com/2015/09/05/Windows/windows-exception-handling-mechanism/">http://www.youngroe.com/2015/09/05/Windows/windows-exception-handling-mechanism/</a><br><a href="https://bbs.kanxue.com/thread-166472-1.htm">https://bbs.kanxue.com/thread-166472-1.htm</a></p>
-<h2 id="ida-android-server-32位-可以部分调试Alicrackme-2"><a href="#ida-android-server-32位-可以部分调试Alicrackme-2" class="headerlink" title="ida android server(32位)可以部分调试Alicrackme_2"></a>ida android server(32位)可以部分调试Alicrackme_2</h2><p>现象是可以逐个加载so文件,当加载到目标so文件时ida会询问文件是否相同,不过没有办法断到init_array和JNI_OnLoad(可能是有init函数?没有发现,难道是linker_init?)<br>总之下次<strong>调试32位so应该使用32位server</strong></p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>买的pixel到了两台,一台正常解锁另一台解不了锁,下午和晚上基本都在搞刷机和解锁</p>
-<ol>
-<li>[SWPU 2019]easyapp这题用pixel刷安卓7.1.0和安卓7.1.2都没办法hook得到返回值,安卓8.1.0一开始没有崩溃,返回了一个字符串(不正确),后面又开始崩溃</li>
-<li>没解锁的那台手机搜寻了网上很多文章,有用pixel安卓10绕过进行解锁的(需要连接wifi访问google,可是这个手机有网络锁,wifi和插卡都不能用),后来去找解网络锁的办法也没什么效果</li>
-</ol>
-<p>明天好好研究下安洵杯2019crackme,争取学学unidbg<br>花这么多时间在配置环境上面实在太难受了</p>
-]]></content>
-      <categories>
-        <category>2023年9月日报</category>
-      </categories>
-      <tags>
-        <tag>日报</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>2023-09-08日报</title>
-    <url>/2023/09/08/%E6%97%A5%E6%8A%A5/2023-09/2023-09-08%E6%97%A5%E6%8A%A5/</url>
-    <content><![CDATA[<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ol>
-<li><p>7号一天的课都很无聊,感觉是在浪费时间,以后得带着电脑自学<br>只在晚上仔细看了下安洵杯2019 CrackMe</p>
-</li>
-<li><p>今天主要是学了下数据库的基本使用<br>老师讲的全是理论没有看到实际操作,很抽象<br>mysql环境有问题一直在调试和安装,最后还是SQLServer方便</p>
-</li>
-<li><p>处理了下迎新,蓝帽杯往返,安装取证软件等杂事</p>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>2023年9月日报</category>
-      </categories>
-      <tags>
-        <tag>日报</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>安洵杯2019_CrackMe</title>
     <url>/2023/09/08/%E9%A2%98%E7%9B%AE/BUUCTF/%E5%AE%89%E6%B4%B5%E6%9D%AF2019_CrackMe/</url>
     <content><![CDATA[<h1 id="main"><a href="#main" class="headerlink" title="main"></a>main</h1><p>首先查看main函数可以发现基本逻辑非常简单,这里有个非法内存访问指令</p>
@@ -1237,35 +967,6 @@
         <tag>IATHook</tag>
         <tag>VEH</tag>
         <tag>SEH</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>2023-09-09日报</title>
-    <url>/2023/09/09/%E6%97%A5%E6%8A%A5/2023-09/2023-09-09%E6%97%A5%E6%8A%A5/</url>
-    <content><![CDATA[<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>今天主要是迎新 得准备招新宣讲的ppt了<br>晚上把web第一周作业基本做完<br>前端一如既往的好麻烦</p>
-]]></content>
-      <categories>
-        <category>2023年9月日报</category>
-      </categories>
-      <tags>
-        <tag>日报</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>2023-09-12日报</title>
-    <url>/2023/09/12/%E6%97%A5%E6%8A%A5/2023-09/2023-09-12%E6%97%A5%E6%8A%A5/</url>
-    <content><![CDATA[<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ol>
-<li><p>昨天研究了下网鼎杯2020 signal<br>这题的vmp保护可以通过获取指令执行流,修改代码为逆代码,再反向执行指令序列即可<br> vmp保护的关键是获取执行流和对应指令序列</p>
-</li>
-<li><p>今天主要是尝试将rwProcMem33编译进安卓内核<br> 参考文章<a href="https://bbs.kanxue.com/thread-278647.htm#msg_header_h2_5">https://bbs.kanxue.com/thread-278647.htm#msg_header_h2_5</a><br> 文章正好和我的测试机非常匹配,可惜今晚没有成功编译出内核,最后有个报错卡了很久<br> 明天再试试看,实在不行弃用ubuntu18.04,改用20.04</p>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>2023年9月日报</category>
-      </categories>
-      <tags>
-        <tag>日报</tag>
       </tags>
   </entry>
   <entry>
@@ -1527,22 +1228,6 @@
       </tags>
   </entry>
   <entry>
-    <title>2023-09-17日报</title>
-    <url>/2023/09/17/%E6%97%A5%E6%8A%A5/2023-09/2023-09-17%E6%97%A5%E6%8A%A5/</url>
-    <content><![CDATA[<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><h2 id="1-9-13日成功将rwProcMem33模块编译进内核"><a href="#1-9-13日成功将rwProcMem33模块编译进内核" class="headerlink" title="1. 9-13日成功将rwProcMem33模块编译进内核"></a>1. 9-13日成功将rwProcMem33模块编译进内核</h2><pre><code>也编译好了服务端和客户端,可以下硬件断点
-很可能是Ubuntu18.04太老,换20.04才成功
-</code></pre>
-<h2 id="2-9-14-9-16围绕着蓝帽杯半决赛跑"><a href="#2-9-14-9-16围绕着蓝帽杯半决赛跑" class="headerlink" title="2. 9-14~9-16围绕着蓝帽杯半决赛跑"></a>2. 9-14~9-16围绕着蓝帽杯半决赛跑</h2><p>   题目感觉不难,逆向想复杂了,结果就是个矩阵乘法<br>   取证得细心,答案格式太搞了<br>   下次线下要提前规划好,这次去上海没玩到什么有点可惜</p>
-<h2 id="3-复现了羊城杯2023-vm-wo"><a href="#3-复现了羊城杯2023-vm-wo" class="headerlink" title="3. 复现了羊城杯2023-vm_wo"></a>3. 复现了羊城杯2023-vm_wo</h2><p>   做了网鼎杯signal之后,这道题也可以下手了<br>   首先是分析程序基本逻辑,写出case对应指令<br>   然后通过opcode获取指令执行流<br>   再分析实现的功能<br>   这题并不难,是比赛时被vmp吓到了,很多case分支是混淆的,实际就是个逐字节异或,移位的加密操作</p>
-]]></content>
-      <categories>
-        <category>2023年9月日报</category>
-      </categories>
-      <tags>
-        <tag>日报</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>WMCTF2023_ezAndorid</title>
     <url>/2023/08/22/%E6%AF%94%E8%B5%9B/WMCTF2023/WMCTF2023-ezAndorid/</url>
     <content><![CDATA[<h1 id="Java层逻辑"><a href="#Java层逻辑" class="headerlink" title="Java层逻辑"></a>Java层逻辑</h1><p>Java层并不复杂 判断用户名和密码 这两个函数都是native函数</p>
@@ -1634,26 +1319,6 @@
       </tags>
   </entry>
   <entry>
-    <title>2023-10-08日报</title>
-    <url>/2023/10/08/%E6%97%A5%E6%8A%A5/2023-10/2023-10-08%E6%97%A5%E6%8A%A5/</url>
-    <content><![CDATA[<h1 id="收获"><a href="#收获" class="headerlink" title="收获"></a>收获</h1><h2 id="一-学习IATHook的原理并用代码实现"><a href="#一-学习IATHook的原理并用代码实现" class="headerlink" title="一.学习IATHook的原理并用代码实现"></a>一.学习IATHook的原理并用代码实现</h2><p>IATHook是程序导入dll时,每个dll都会有一张对应的导入表,每个导入表记录了INT和IAT的地址<br>其中IAT记录了该dll的导入函数真实地址<br>IATHook的基本流程:</p>
-<ol>
-<li>获取目标函数地址</li>
-<li>根据dll名查找导入表</li>
-<li>查找IAT表</li>
-<li>修改IAT表项</li>
-</ol>
-<p>可以修改自身IAT或者修改其他进程IAT,修改其他进程时使用Dll注入比较方便</p>
-<h2 id="学习main函数前后执行代码的方法"><a href="#学习main函数前后执行代码的方法" class="headerlink" title="学习main函数前后执行代码的方法"></a>学习main函数前后执行代码的方法</h2><p>主要是利用C++的构造函数和析构函数,或者GNUC的attribute关键字,用起来并不复杂,这个可以用来出题</p>
-]]></content>
-      <categories>
-        <category>2023年10月日报</category>
-      </categories>
-      <tags>
-        <tag>日报</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>main函数前后执行代码</title>
     <url>/2023/10/08/Reverse/%E5%B0%8F%E7%9F%A5%E8%AF%86%E7%82%B9/main%E5%87%BD%E6%95%B0%E5%89%8D%E5%90%8E%E6%89%A7%E8%A1%8C%E4%BB%A3%E7%A0%81/</url>
     <content><![CDATA[<h1 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h1><p><a href="https://blog.csdn.net/mlyhzt/article/details/111351883">如何在main函数之前和之后执行一段程序</a></p>
@@ -1723,107 +1388,6 @@
       </categories>
       <tags>
         <tag>IATHook</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>2023-10-10日报</title>
-    <url>/2023/10/10/%E6%97%A5%E6%8A%A5/2023-10/2023-10-10%E6%97%A5%E6%8A%A5/</url>
-    <content><![CDATA[<h1 id="收获"><a href="#收获" class="headerlink" title="收获"></a>收获</h1><h2 id="1-学习WinSocket网络编程"><a href="#1-学习WinSocket网络编程" class="headerlink" title="1. 学习WinSocket网络编程"></a>1. 学习WinSocket网络编程</h2><p>这两天学到了TCP的服务端和客户端,UDP的服务端和客户端<br>socket套接字个人理解是主机用于收发数据的抽象对象<br>套接字绑定则是将套接字和ip地址及端口号进行绑定,方便其他主机定位本机</p>
-<p>TCP是面向连接的,所以客户端和服务端都需要进行套接字绑定,方便向对方收发数据<br>服务端:绑定套接字后对套接字进行监听并等待连接,如果有连接请求则尝试建立连接<br>建立成功后分配一个AcceptSocket作为和服务端通信的对象<br>通过对AcceptSocket对象调用recv接收数据,调用send发送数据</p>
-<p>客户端:绑定套接字后通过该套接字和目的主机ip地址及端口即可请求连接<br>连接建立成功后可以直接通过绑定好的套接字收发数据</p>
-<h2 id="2-学习ELF文件结构和编译链接"><a href="#2-学习ELF文件结构和编译链接" class="headerlink" title="2.学习ELF文件结构和编译链接"></a>2.学习ELF文件结构和编译链接</h2><p>回头再看程序员的自我修养发现elf文件结构和pe结构类似,比以前好理解<br>准备深入学习一下elf文件结构和编译链接的知识</p>
-]]></content>
-      <categories>
-        <category>2023年10月日报</category>
-      </categories>
-      <tags>
-        <tag>日报</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>2023-10-11日报</title>
-    <url>/2023/10/11/%E6%97%A5%E6%8A%A5/2023-10/2023-10-11%E6%97%A5%E6%8A%A5/</url>
-    <content><![CDATA[<h1 id="收获"><a href="#收获" class="headerlink" title="收获"></a>收获</h1><h2 id="1-柏鹭杯"><a href="#1-柏鹭杯" class="headerlink" title="1.柏鹭杯"></a>1.柏鹭杯</h2><p>柏鹭杯坐大牢,七个小时才签个到<br>签到题想太多了,被变量在栈上的位置困惑住很久<br>不过有意思的是这些浮点数指令,明天可以总结一下,是不错的出题思路</p>
-<h2 id="2-网络编程-多线程处理"><a href="#2-网络编程-多线程处理" class="headerlink" title="2.网络编程-多线程处理"></a>2.网络编程-多线程处理</h2><p>前面学到的网络编程都是服务端一次对接一个客户端,显然并不够用<br>所以可以利用多线程技术让服务端一次对接多个客户端<br>代码如下</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;winsock2.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">pragma</span> comment(lib,<span class="string">&quot;ws2_32.lib&quot;</span>)</span></span><br><span class="line"><span class="function">DWORD WINAPI <span class="title">ThreadProc</span><span class="params">(LPVOID lpParameter)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span>* argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// 0. 初始化</span></span><br><span class="line">    WORD wsVersion = <span class="built_in">MAKEWORD</span>(<span class="number">2</span>, <span class="number">2</span>);</span><br><span class="line">    WSADATA wsaData = &#123; <span class="number">0</span> &#125;;</span><br><span class="line">    <span class="built_in">WSAStartup</span>(wsVersion, &amp;wsaData);</span><br><span class="line">    <span class="comment">// 1. 创建套接字</span></span><br><span class="line">    SOCKET sSocket = <span class="built_in">socket</span>(AF_INET, SOCK_STREAM, <span class="number">0</span>);</span><br><span class="line">    <span class="keyword">if</span> (SOCKET_ERROR == sSocket) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;套接字创建失败!\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;套接字创建成功!\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 2. 绑定套接字</span></span><br><span class="line">    sockaddr_in sockAddrInfo = &#123; <span class="number">0</span> &#125;;    <span class="comment">// 初始化</span></span><br><span class="line">    <span class="type">char</span> ipaddr[<span class="number">10</span>] = &#123; <span class="number">0</span> &#125;;</span><br><span class="line">    <span class="type">unsigned</span> <span class="type">short</span> port = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">&quot;Plz input local ipaddr:&quot;</span>);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%s&quot;</span>, ipaddr);</span><br><span class="line">    sockAddrInfo.sin_addr.S_un.S_addr = <span class="built_in">inet_addr</span>(ipaddr);</span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">&quot;Plz input local port:&quot;</span>);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;port);</span><br><span class="line">    sockAddrInfo.sin_port = <span class="built_in">htons</span>(port); <span class="comment">// 端口</span></span><br><span class="line">    sockAddrInfo.sin_family = AF_INET; <span class="comment">// 地址族规范</span></span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> bRes = <span class="built_in">bind</span>(sSocket, (sockaddr*)&amp;sockAddrInfo, <span class="built_in">sizeof</span>(sockAddrInfo));</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (SOCKET_ERROR == bRes) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;绑定失败!\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;绑定成功!\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 3. 监听套接字</span></span><br><span class="line">    <span class="type">int</span> lRes = <span class="built_in">listen</span>(sSocket, <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">if</span> (SOCKET_ERROR == lRes) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;监听失败!\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;监听成功!\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 循环</span></span><br><span class="line">    <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">        <span class="comment">// 4. 等待连接</span></span><br><span class="line">        sockaddr_in acceptSockAddrInfo = &#123; <span class="number">0</span> &#125;;    <span class="comment">// 初始化</span></span><br><span class="line">        <span class="type">int</span> acceptSockAddrLen = <span class="built_in">sizeof</span>(acceptSockAddrInfo);</span><br><span class="line">        SOCKET aSocket = <span class="built_in">accept</span>(sSocket, (sockaddr*)&amp;acceptSockAddrInfo, &amp;acceptSockAddrLen);</span><br><span class="line">        <span class="keyword">if</span> (INVALID_SOCKET != aSocket) &#123;</span><br><span class="line">            HANDLE hThread = <span class="built_in">CreateThread</span>(<span class="literal">NULL</span>, <span class="literal">NULL</span>, ThreadProc, (LPVOID)aSocket, <span class="number">0</span>, <span class="literal">NULL</span>);</span><br><span class="line">            <span class="built_in">CloseHandle</span>(hThread);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 7. 关闭套接字</span></span><br><span class="line">    <span class="built_in">closesocket</span>(sSocket);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">WSACleanup</span>();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">DWORD WINAPI <span class="title">ThreadProc</span><span class="params">(LPVOID lpParameter)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> ret = <span class="number">1</span>;</span><br><span class="line">    SOCKET aSocket = (SOCKET)lpParameter;</span><br><span class="line">    <span class="type">char</span> buf[<span class="number">100</span>] = &#123; <span class="number">0</span> &#125;;</span><br><span class="line">    <span class="comment">// 收发数据</span></span><br><span class="line">    <span class="keyword">do</span></span><br><span class="line">    &#123;</span><br><span class="line">        ret = <span class="built_in">recv</span>(aSocket, buf, <span class="number">100</span>, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">strcmp</span>(buf, <span class="string">&quot;close&quot;</span>) == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;Recv data: %s \n&quot;</span>, buf);</span><br><span class="line">        <span class="built_in">send</span>(aSocket, buf, <span class="built_in">strlen</span>(buf) + <span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">        <span class="built_in">memset</span>(buf, <span class="number">0</span>, <span class="number">100</span>);</span><br><span class="line">    &#125; <span class="keyword">while</span> (ret != <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 断开连接(被动)</span></span><br><span class="line">    <span class="built_in">shutdown</span>(aSocket, SD_BOTH);</span><br><span class="line">    <span class="comment">// 关闭套接字</span></span><br><span class="line">    <span class="built_in">closesocket</span>(aSocket);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>主函数中创建了线程后没有等待线程信号,马上调用closehandle函数<br>我怀疑这可能会关闭子线程,导致子线程无法正常执行<br>后来经过测试以及询问gpt发现并不会影响</p>
-<p>操作系统中，句柄（handle）是一个抽象的对象，用于标识资源（如文件、套接字、线程、进程等）。<br>关闭句柄<strong>只是告诉操作系统不再使用该句柄，不再需要对应的资源</strong>。<br>关闭句柄并不会影响已经创建的线程、进程等的执行。<strong>线程在被创建后会独立地执行，不受创建线程时的句柄状态的影响</strong>。<br>关闭句柄主要是为了释放操作系统内部的资源记录和管理句柄的内存，防止资源泄漏。</p>
-<p>总而言之句柄只是抽象的资源对象,对象本身的行为并不会受到影响<br>就像openprocess返回的进程句柄,使用完毕后即可关闭,但是我们关闭了进程句柄并不会导致进程关闭,这是同样的道理</p>
-]]></content>
-      <categories>
-        <category>2023年10月日报</category>
-      </categories>
-      <tags>
-        <tag>日报</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>2023-10-13日报</title>
-    <url>/2023/10/13/%E6%97%A5%E6%8A%A5/2023-10/2023-10-13%E6%97%A5%E6%8A%A5/</url>
-    <content><![CDATA[<h1 id="收获"><a href="#收获" class="headerlink" title="收获"></a>收获</h1><p>1.整理了下编译原理的自动机部分,完成NFA转DFA的代码</p>
-<p>2.做招新宣讲ppt,逆向ppt明天再改改,写个简单的讲稿</p>
-]]></content>
-      <categories>
-        <category>2023年10月日报</category>
-      </categories>
-      <tags>
-        <tag>日报</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>2023-10-22日报</title>
-    <url>/2023/10/23/%E6%97%A5%E6%8A%A5/2023-10/2023-10-22%E6%97%A5%E6%8A%A5/</url>
-    <content><![CDATA[<h1 id="收获"><a href="#收获" class="headerlink" title="收获"></a>收获</h1><h2 id="完成N1CTF-re签到题AdditionPlus"><a href="#完成N1CTF-re签到题AdditionPlus" class="headerlink" title="完成N1CTF re签到题AdditionPlus"></a>完成N1CTF re签到题AdditionPlus</h2><p>这题昨天的思路就是使用Ponce插件爆,可惜没设置好ponce最大执行时间所以没爆出来<br>今天把时间和空间设置拉满就爆出来了,patch程序八位字节一组爆即可</p>
-<h2 id="使用了几个Xposed模块"><a href="#使用了几个Xposed模块" class="headerlink" title="使用了几个Xposed模块"></a>使用了几个Xposed模块</h2><p>qq防撤回还是很有用的,还有一些解锁vip,以后可以多搞搞机,整点xposed开发</p>
-<h2 id="学了一点手机抓包"><a href="#学了一点手机抓包" class="headerlink" title="学了一点手机抓包"></a>学了一点手机抓包</h2><p>基本配置也不难,手机设置代理到主机,主机开启抓包即可<br>注意windwos需要关闭防火墙,否则没有任何反应,kali虚拟机可以直接抓</p>
-<h2 id="了解了一下eCapture抓包工具"><a href="#了解了一下eCapture抓包工具" class="headerlink" title="了解了一下eCapture抓包工具"></a>了解了一下eCapture抓包工具</h2><p>该工具基于ebpf技术,对linux内核版本要求至少是&gt;&#x3D;4.18,可惜测试机内核老用不了<br>kali试了一下也没成功,还得继续研究下ebpf技术基础才可以</p>
-]]></content>
-      <categories>
-        <category>2023年10月日报</category>
-      </categories>
-      <tags>
-        <tag>日报</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>2023-10-23日报</title>
-    <url>/2023/10/23/%E6%97%A5%E6%8A%A5/2023-10/2023-10-23%E6%97%A5%E6%8A%A5/</url>
-    <content><![CDATA[<h1 id="收获"><a href="#收获" class="headerlink" title="收获"></a>收获</h1><h2 id="web"><a href="#web" class="headerlink" title="web"></a>web</h2><p>学到了定时器,async await,bootstarp框架<br>框架开发非常方便,比手搓好多了</p>
-<h2 id="编译原理"><a href="#编译原理" class="headerlink" title="编译原理"></a>编译原理</h2><p>看懂了first follow select集合的定义和运算<br>判断LL(1)文法的方法</p>
-<h2 id="ebpf"><a href="#ebpf" class="headerlink" title="ebpf"></a>ebpf</h2><p>找到一篇不错的开源文档<a href="https://github.com/eunomia-bpf/bpf-developer-tutorial">https://github.com/eunomia-bpf/bpf-developer-tutorial</a><br>准备跟着示例学了,甚至有一键创建环境我哭死</p>
-]]></content>
-      <categories>
-        <category>2023年10月日报</category>
-      </categories>
-      <tags>
-        <tag>日报</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>2023-10-24日报</title>
-    <url>/2023/10/24/%E6%97%A5%E6%8A%A5/2023-10/2023-10-24%E6%97%A5%E6%8A%A5/</url>
-    <content><![CDATA[<h1 id="今日收获"><a href="#今日收获" class="headerlink" title="今日收获"></a>今日收获</h1><h2 id="完成polyre"><a href="#完成polyre" class="headerlink" title="完成polyre"></a>完成polyre</h2><p>这题使用到了OLLVM混淆,有平坦化和虚假控制流</p>
-<ol>
-<li>deflat直接使用github项目的脚本即可,参数传入需要解混淆的函数首地址</li>
-<li>去虚假控制流学到个骚操作–直接修改混淆的全局变量为const类型</li>
-<li>最后的加密算法是CRC64<br>算是了解到了CRC64如何逆,并不复杂</li>
-</ol>
-<h2 id="尝试复现N1CTF-N1LLua"><a href="#尝试复现N1CTF-N1LLua" class="headerlink" title="尝试复现N1CTF-N1LLua"></a>尝试复现N1CTF-N1LLua</h2><ol>
-<li>了解到一点点lua逆向知识,代码存储在resources.assets文件中</li>
-<li>可以通过unluac.jar进行解包和反汇编</li>
-<li>这题用lua5.3套了一个lua5.2<br> 外部代码加载内部函数的16进制码并运行<br>明天配置一下lua的环境</li>
-</ol>
-<h2 id="看了下n1go"><a href="#看了下n1go" class="headerlink" title="看了下n1go"></a>看了下n1go</h2><p>好抽象,wp代码复制下来运行不了,代码也看不懂,4万行代码如何手撕是个问题,晚点再看</p>
-<h1 id="明日计划"><a href="#明日计划" class="headerlink" title="明日计划"></a>明日计划</h1><ol>
-<li>复现N1LLua</li>
-<li>开发第一个ebpf程序</li>
-</ol>
-]]></content>
-      <categories>
-        <category>2023年10月日报</category>
-      </categories>
-      <tags>
-        <tag>日报</tag>
       </tags>
   </entry>
   <entry>
@@ -1964,19 +1528,6 @@
       </tags>
   </entry>
   <entry>
-    <title>2023-10-25日报</title>
-    <url>/2023/10/26/%E6%97%A5%E6%8A%A5/2023-10/2023-10-25%E6%97%A5%E6%8A%A5/</url>
-    <content><![CDATA[<h2 id="收获"><a href="#收获" class="headerlink" title="收获"></a>收获</h2><p>复现了N1CTF N1LLua<br>Unity的资源文件存在resources.assets文件中<br>使用UABE工具提取</p>
-<p>unluac可以将luac字节码反编译为lua代码<br>也可以将luac代码输出为汇编码<br>还可以将汇编码编译为luac代码</p>
-]]></content>
-      <categories>
-        <category>2023年10月日报</category>
-      </categories>
-      <tags>
-        <tag>日报</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>d810插件去ollvm混淆</title>
     <url>/2023/10/31/%E9%A2%98%E7%9B%AE/OLLVM/d810%E6%8F%92%E4%BB%B6%E5%8E%BBollvm%E6%B7%B7%E6%B7%86/</url>
     <content><![CDATA[<h1 id="d810插件"><a href="#d810插件" class="headerlink" title="d810插件"></a>d810插件</h1><p><a href="https://cloud.tencent.com/developer/article/1845335">IDA F5 增强插件，还我源代码（一）</a></p>
@@ -2003,202 +1554,6 @@
       <tags>
         <tag>OLLVM</tag>
         <tag>ida插件</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>2023-11-18日报</title>
-    <url>/2023/11/18/%E6%97%A5%E6%8A%A5/2023-11/2023-11-18%E6%97%A5%E6%8A%A5/</url>
-    <content><![CDATA[<h1 id="完成任务"><a href="#完成任务" class="headerlink" title="完成任务"></a>完成任务</h1><ol>
-<li><p>编译原理实验4-简单优先分析的实现<br>关键问题在于遇到&gt;关系时查找符号栈的句柄头</p>
-</li>
-<li><p>HECTF ezre和ez_android<br>这两题都不难,一题异或一题安卓动调得到map走迷宫</p>
-</li>
-<li><p>[SWPU2019]EasiestRe<br>这题非常有意思,使用到了双进程技术,借此可以学习调试器的基本原理并制作windwos调试器</p>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>2023年11月日报</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>2023-11-21日报</title>
-    <url>/2023/11/21/%E6%97%A5%E6%8A%A5/2023-11/2023-11-21%E6%97%A5%E6%8A%A5/</url>
-    <content><![CDATA[<h1 id="今天做的事"><a href="#今天做的事" class="headerlink" title="今天做的事"></a>今天做的事</h1><ol>
-<li>教学论临时顶上辩论赛,感觉还可以<br>存在即合理,很多东西不是想的那样,偶尔试试了解一下拓宽知识面,学到的东西都有用</li>
-<li>写完思想汇报和自我剖析材料<br>以后对于材料还是要早点写,不要拖延</li>
-<li>上二十大专题党课<br>做笔记能力有待提高</li>
-</ol>
-]]></content>
-      <categories>
-        <category>2023年11月日报</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>2023-11-22日报</title>
-    <url>/2023/11/22/%E6%97%A5%E6%8A%A5/2023-11/2023-11-22%E6%97%A5%E6%8A%A5/</url>
-    <content><![CDATA[<h1 id="做的事"><a href="#做的事" class="headerlink" title="做的事"></a>做的事</h1><ol>
-<li>政审材料跑了三趟还没成</li>
-<li>游泳得大力出奇迹,多看看学习视频?</li>
-<li>Unity Android逆向有点意思<br><a href="https://equinox-shame.github.io/2023/08/16/IL2CPP%20%E9%80%86%E5%90%91/#%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86">https://equinox-shame.github.io/2023/08/16/IL2CPP%20%E9%80%86%E5%90%91/#%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86</a></li>
-</ol>
-<h1 id="不足"><a href="#不足" class="headerlink" title="不足"></a>不足</h1><ol>
-<li>少看b站短视频,浪费时间</li>
-<li>找人前先线上问问</li>
-</ol>
-]]></content>
-      <categories>
-        <category>2023年11月日报</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>2023-11-23日报</title>
-    <url>/2023/11/23/%E6%97%A5%E6%8A%A5/2023-11/2023-11-23%E6%97%A5%E6%8A%A5/</url>
-    <content><![CDATA[<h1 id="做的事"><a href="#做的事" class="headerlink" title="做的事"></a>做的事</h1><ol>
-<li><p>编译原理课大概弄明白LR(0)分析的做题方法<br>创建DFA和创建分析表,还没总结</p>
-</li>
-<li><p>看了下IL2CPP逆向基础<br>pz爷写的是针不戳</p>
-</li>
-<li><p>抄了一部分党课笔记,效率不太够</p>
-</li>
-<li><p>看了一下英语语法新思维<br>名词的可数和不可数</p>
-</li>
-<li><p>整理了一下物品</p>
-</li>
-</ol>
-<h1 id="不足"><a href="#不足" class="headerlink" title="不足"></a>不足</h1><ol>
-<li>还是看b站短视频浪费了很多时间</li>
-<li>晚上玩三国杀玩了不少时间</li>
-</ol>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>今天总的来来说也没做多少事,编译实验课应该好好总结下LR(0)的<br>吃完午饭回去应该早点休息,看b站看了快一个小时,睡醒也磨蹭了快一小时才去整理和洗衣服<br>上性科学资料带少了硬抄也没超多少<br>不过上完课拉几下引体,跑个步再去吃饭感觉不错<br>晚上德育看英语语法看的有点来劲,今天喜欢查常见词的英语表示<br>晚上回来纯玩了两个多小时</p>
-<p>今天浪费了大概4小时</p>
-]]></content>
-      <categories>
-        <category>2023年11月日报</category>
-      </categories>
-      <tags>
-        <tag>日报</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>2023-11-24日报</title>
-    <url>/2023/11/24/%E6%97%A5%E6%8A%A5/2023-11/2023-11-24%E6%97%A5%E6%8A%A5/</url>
-    <content><![CDATA[<h1 id="做的事"><a href="#做的事" class="headerlink" title="做的事"></a>做的事</h1><ol>
-<li>继续看了下英语新思维,做了几道题</li>
-<li>简单写了下近期的日程</li>
-<li>写了下寝期望</li>
-</ol>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>今天上午数据库,鼓捣半天bug出在没有连接数据库便执行了命令<br>下午军事史拿期中答题卡结果不用,白跑一趟,中午没睡好简单看了下英语<br>下课跑了一圈,回来玩三国杀,吃外卖,看视频,晚上睡醒还是在玩三国杀<br>11点才开始做点事,今天又混过去了<br>明天有两个比赛和各种事撞在一起,顺其自然</p>
-]]></content>
-      <categories>
-        <category>2023年11月日报</category>
-      </categories>
-      <tags>
-        <tag>日报</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>2023-11-25日报</title>
-    <url>/2023/11/27/%E6%97%A5%E6%8A%A5/2023-11/2023-11-25%E6%97%A5%E6%8A%A5/</url>
-    <content><![CDATA[<h1 id="做的事"><a href="#做的事" class="headerlink" title="做的事"></a>做的事</h1><ol>
-<li><p>上午看了下tpctf和dasctf<br>tp的maze是cpython打包的so逆向,很难<br>dasctf逆向四道题感觉都有点思路,可以复现一下<br>其中python逆向题需要修复magic head为3.11<br>在pycdc项目代码中找到了全版本magic head表</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">PycMagic</span> &#123;</span></span><br><span class="line"> MAGIC_1_0 = <span class="number">0x00999902</span>,</span><br><span class="line"> MAGIC_1_1 = <span class="number">0x00999903</span>, <span class="comment">/* Also covers 1.2 */</span></span><br><span class="line"> MAGIC_1_3 = <span class="number">0x0A0D2E89</span>,</span><br><span class="line"> MAGIC_1_4 = <span class="number">0x0A0D1704</span>,</span><br><span class="line"> MAGIC_1_5 = <span class="number">0x0A0D4E99</span>,</span><br><span class="line"> MAGIC_1_6 = <span class="number">0x0A0DC4FC</span>,</span><br><span class="line"></span><br><span class="line"> MAGIC_2_0 = <span class="number">0x0A0DC687</span>,</span><br><span class="line"> MAGIC_2_1 = <span class="number">0x0A0DEB2A</span>,</span><br><span class="line"> MAGIC_2_2 = <span class="number">0x0A0DED2D</span>,</span><br><span class="line"> MAGIC_2_3 = <span class="number">0x0A0DF23B</span>,</span><br><span class="line"> MAGIC_2_4 = <span class="number">0x0A0DF26D</span>,</span><br><span class="line"> MAGIC_2_5 = <span class="number">0x0A0DF2B3</span>,</span><br><span class="line"> MAGIC_2_6 = <span class="number">0x0A0DF2D1</span>,</span><br><span class="line"> MAGIC_2_7 = <span class="number">0x0A0DF303</span>,</span><br><span class="line"></span><br><span class="line"> MAGIC_3_0 = <span class="number">0x0A0D0C3A</span>,</span><br><span class="line"> MAGIC_3_1 = <span class="number">0x0A0D0C4E</span>,</span><br><span class="line"> MAGIC_3_2 = <span class="number">0x0A0D0C6C</span>,</span><br><span class="line"> MAGIC_3_3 = <span class="number">0x0A0D0C9E</span>,</span><br><span class="line"> MAGIC_3_4 = <span class="number">0x0A0D0CEE</span>,</span><br><span class="line"> MAGIC_3_5 = <span class="number">0x0A0D0D16</span>,</span><br><span class="line"> MAGIC_3_5_3 = <span class="number">0x0A0D0D17</span>,</span><br><span class="line"> MAGIC_3_6 = <span class="number">0x0A0D0D33</span>,</span><br><span class="line"> MAGIC_3_7 = <span class="number">0x0A0D0D42</span>,</span><br><span class="line"> MAGIC_3_8 = <span class="number">0x0A0D0D55</span>,</span><br><span class="line"> MAGIC_3_9 = <span class="number">0x0A0D0D61</span>,</span><br><span class="line"> MAGIC_3_10 = <span class="number">0x0A0D0D6F</span>,</span><br><span class="line"> MAGIC_3_11 = <span class="number">0x0A0D0DA7</span>,</span><br><span class="line"> MAGIC_3_12 = <span class="number">0x0A0D0DCB</span>,</span><br><span class="line"></span><br><span class="line"> INVALID = <span class="number">0</span>,</span><br><span class="line"> &#125;;</span><br></pre></td></tr></table></figure></li>
-<li><p>有限域的问题<br>第一次是在鹏城杯2023初赛BabyRe遇到<br>结果Dasctfx0psu3这次比赛的Tetris也和这个算法类似<br>这个逆向还是需要一点密码知识的,感觉得学点密码了</p>
-</li>
-<li><p>下午上党课</p>
-</li>
-<li><p>晚上参加猫和老鼠游戏</p>
-</li>
-</ol>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>日报于11-27 0:19补<br>有空可以总结下python逆向常见套路和基本分享方法了<br>学密码–&lt;<br>密码编码学与网络安全 原理与实践 第七版&gt;这本书好像不错</p>
-]]></content>
-      <categories>
-        <category>2023年11月日报</category>
-      </categories>
-      <tags>
-        <tag>日报</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>2023-11-26日报</title>
-    <url>/2023/11/27/%E6%97%A5%E6%8A%A5/2023-11/2023-11-26%E6%97%A5%E6%8A%A5/</url>
-    <content><![CDATA[<h1 id="做的事"><a href="#做的事" class="headerlink" title="做的事"></a>做的事</h1><ol>
-<li>上党课</li>
-<li>做培训ppt</li>
-<li>参加书法比赛</li>
-<li>培训<br>讲了下花指令,smc,动调</li>
-<li>晚上组会和师傅们交流了一下<br>无意间了解到信工所考研,貌似11408 360的初试分有点搞</li>
-<li>tomcat修复输出编码导致web项目无法正确启动<br>重新配置了一遍tomcat解决,只需要修改log的配置即可,其他配置不能乱改</li>
-</ol>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>今天总的还是比较忙吧,晚上歇了一会,本来想好好做做web,还是浪费掉了<br>回来后还是浪费在看手机上,以及看了会考研资讯,一个半小时调tomcat,最后半小时写文档<br>一定要给自己找事做,不要停</p>
-]]></content>
-      <categories>
-        <category>2023年11月日报</category>
-      </categories>
-      <tags>
-        <tag>日报</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>2023-11-20至26周报</title>
-    <url>/2023/11/27/%E6%97%A5%E6%8A%A5/2023-11/2023-11-20%E8%87%B326%E5%91%A8%E6%8A%A5/</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
-    <title>2023-11-27日报</title>
-    <url>/2023/11/27/%E6%97%A5%E6%8A%A5/2023-11/2023-11-27%E6%97%A5%E6%8A%A5/</url>
-    <content><![CDATA[<h1 id="做的事"><a href="#做的事" class="headerlink" title="做的事"></a>做的事</h1><ol>
-<li><p>上午web五节课<br>讲了下servlet的基本使用,感觉内容很多,不过能通过后端申请api获取数据并返回给前端了<br>springboot貌似更简单?速成一波</p>
-</li>
-<li><p>中午开会<br>材料要实事求是结合实际,关键知识点要看看背背</p>
-</li>
-<li><p>下午编译课<br>学了SLR(1)分析,LR(0)分析是根据当前状态和当前输入符号进行判断,可归约状态无论输入符号直接归约<br>SLR(1)分析遇到可归约状态(主要是发生冲突时),要继续判断下一个输入符号选择不同的操作</p>
-</li>
-<li><p>晚上党课</p>
-</li>
-</ol>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>好好睡觉,熬夜+事多简直起飞<br>这两天把笔记和线上学习看看,背点题库和理论,再准备下拟态做点题</p>
-]]></content>
-      <categories>
-        <category>2023年11月日报</category>
-      </categories>
-      <tags>
-        <tag>日报</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>2023-11-28日报</title>
-    <url>/2023/11/28/%E6%97%A5%E6%8A%A5/2023-11/2023-11-28%E6%97%A5%E6%8A%A5/</url>
-    <content><![CDATA[<h1 id="做的事"><a href="#做的事" class="headerlink" title="做的事"></a>做的事</h1><ol>
-<li><p>学了下PHP基础语法(看文档学的,还不够深入)<br>印象比较深的就是字符串连接用.点号进行,php用array()创建数组,foreach 循环,特殊的全局变量例如$_POST,$_GET,$GLOBAL等<br>有时间可以系统看看并总结一波</p>
-</li>
-<li><p>做了靶场的三道web题<br>分别是web basic,命令执行,变量覆盖<br>算是初探web了,basic中主要是对于http请求头功能的认识以及一些抓包拦截操作<br>命令执行也就是将传入的字符串作为命令进行执行<br>变量覆盖则比较特殊,$$开头的变量类似指针,可以引用其他变量</p>
-</li>
-<li><p>党员下寝<br>党员下寝和新生进行了一些简单的交流,四个寝室花了两个小时,过的很快<br>回首看去他们和大一的我很像,初入大学还没有摆脱高中的学生思维,但是又找不到什么具体方向,也不愿意深入了解和研究某个方向(怕难),只是普普通通的参加活动和一些比赛,上课听听在做做作业和练习,成绩也还过得去</p>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>2023年11月日报</category>
-      </categories>
-      <tags>
-        <tag>日报</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>2023-12-4日报</title>
-    <url>/2023/12/04/%E6%97%A5%E6%8A%A5/2023-12/2023-12-4%E6%97%A5%E6%8A%A5/</url>
-    <content><![CDATA[<h1 id="做的事"><a href="#做的事" class="headerlink" title="做的事"></a>做的事</h1><ol>
-<li>总结了一下LR0和SLR1分析法的基本步骤</li>
-<li>试着用虚表hook出了一道题</li>
-</ol>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>编译好麻烦,还得好好总结,忘得太快</p>
-]]></content>
-      <categories>
-        <category>2023年12月日报</category>
-      </categories>
-      <tags>
-        <tag>日报</tag>
       </tags>
   </entry>
   <entry>
@@ -2243,57 +1598,6 @@
         <tag>比赛</tag>
         <tag>Android</tag>
         <tag>Native</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>2023-12-13日报</title>
-    <url>/2023/12/13/%E6%97%A5%E6%8A%A5/2023-12/2023-12-13%E6%97%A5%E6%8A%A5/</url>
-    <content><![CDATA[<h1 id="今日总结"><a href="#今日总结" class="headerlink" title="今日总结"></a>今日总结</h1><ol>
-<li>学习了go的数组和切片基础</li>
-<li>试着qemu用户模式的基本使用</li>
-<li>xposed,frida官方文档值得研究</li>
-</ol>
-]]></content>
-      <categories>
-        <category>2023年12月日报</category>
-      </categories>
-      <tags>
-        <tag>日报</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>2023-12-16日报</title>
-    <url>/2023/12/16/%E6%97%A5%E6%8A%A5/2023-12/2023-12-16%E6%97%A5%E6%8A%A5/</url>
-    <content><![CDATA[<h1 id="今日总结"><a href="#今日总结" class="headerlink" title="今日总结"></a>今日总结</h1><ol>
-<li>打赣网杯和强网杯<br>赣网杯没干出来,强网杯做了babyre</li>
-<li>aes算法和aes白盒逆向值得好好学习,遇到好几次了</li>
-<li>规划好大方向,每月计划,每周计划</li>
-<li>不要熬过十二点</li>
-<li>英语要坚持学</li>
-</ol>
-]]></content>
-      <categories>
-        <category>2023年12月日报</category>
-      </categories>
-      <tags>
-        <tag>日报</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>2023-12-17日报</title>
-    <url>/2023/12/17/%E6%97%A5%E6%8A%A5/2023-12/2023-12-17%E6%97%A5%E6%8A%A5/</url>
-    <content><![CDATA[<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ol>
-<li>赣网杯re1扫雷程序藏个exe,re2去花指令后混淆没看明白</li>
-<li>强网杯ezre的sm4算法值得学习,强网先锋的ezre比较抽象,感觉也可以做,白盒aes一定得学学</li>
-<li>下午参观了烈士纪念馆,挺震撼</li>
-<li>晚上培训比较仓促看了半小时题,wp写好了希望大伙能复现</li>
-</ol>
-]]></content>
-      <categories>
-        <category>2023年12月日报</category>
-      </categories>
-      <tags>
-        <tag>日报</tag>
       </tags>
   </entry>
 </search>
