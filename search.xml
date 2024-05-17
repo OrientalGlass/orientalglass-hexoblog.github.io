@@ -1600,4 +1600,49 @@
         <tag>Native</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Charles代理抓包安装配置</title>
+    <url>/2024/05/17/Android/%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/Charles%E4%BB%A3%E7%90%86%E6%8A%93%E5%8C%85%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/</url>
+    <content><![CDATA[<p>参考文章<a href="https://blog.csdn.net/qq_45564088/article/details/121864553">https://blog.csdn.net/qq_45564088/article/details/121864553</a></p>
+<h1 id="PC端Charles安装配置"><a href="#PC端Charles安装配置" class="headerlink" title="PC端Charles安装配置"></a>PC端Charles安装配置</h1><h2 id="Charles安装激活"><a href="#Charles安装激活" class="headerlink" title="Charles安装激活"></a>Charles安装激活</h2><p>Charles下载地址<a href="https://www.charlesproxy.com/download/">https://www.charlesproxy.com/download/</a></p>
+<p>安装后生成keygen<a href="https://ydq.github.io/charles-keygen/,%E5%9C%A8help%E9%80%89%E9%A1%B9%E5%8D%A1%E4%B8%AD%E5%A1%AB%E5%86%99%E4%BF%A1%E6%81%AF%E6%BF%80%E6%B4%BB">https://ydq.github.io/charles-keygen/,在help选项卡中填写信息激活</a></p>
+<h2 id="安装本地证书"><a href="#安装本地证书" class="headerlink" title="安装本地证书"></a>安装本地证书</h2><p><img src="/2024/05/17/Android/%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/Charles%E4%BB%A3%E7%90%86%E6%8A%93%E5%8C%85%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/0_%E5%AE%89%E8%A3%85%E6%9C%AC%E5%9C%B0%E8%AF%81%E4%B9%A6.png"></p>
+<p><img src="/2024/05/17/Android/%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/Charles%E4%BB%A3%E7%90%86%E6%8A%93%E5%8C%85%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/3_%E8%AF%81%E4%B9%A6%E5%AE%89%E8%A3%85%E5%90%91%E5%AF%BC.png"></p>
+<p><img src="/2024/05/17/Android/%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/Charles%E4%BB%A3%E7%90%86%E6%8A%93%E5%8C%85%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/4_%E6%A0%B9%E8%AF%81%E4%B9%A6.png"></p>
+<h2 id="设置Proxy"><a href="#设置Proxy" class="headerlink" title="设置Proxy"></a>设置Proxy</h2><p>注: 本地抓包可以开启Windows Proxy,若代理抓手机包建议关闭,否则会抓到PC本地包干扰分析</p>
+<p>勾选上HTTP Proxy的两个选项框,默认代理端口8888,根据需求修改</p>
+<p><img src="/2024/05/17/Android/%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/Charles%E4%BB%A3%E7%90%86%E6%8A%93%E5%8C%85%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/7_ProxySetting.png"></p>
+<h2 id="设置SSL-Proxying"><a href="#设置SSL-Proxying" class="headerlink" title="设置SSL Proxying"></a>设置SSL Proxying</h2><p>勾选Enable SSL Proxying 在include中添加*:443(方便起见可以仅设置*:*)</p>
+<p><img src="/2024/05/17/Android/%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/Charles%E4%BB%A3%E7%90%86%E6%8A%93%E5%8C%85%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/6_SSLProxying.png"></p>
+<h1 id="移动端配置"><a href="#移动端配置" class="headerlink" title="移动端配置"></a>移动端配置</h1><h2 id="代理设置"><a href="#代理设置" class="headerlink" title="代理设置"></a>代理设置</h2><p>首先在help&gt;Local IP Addresses查看Charles的IP地址</p>
+<p><img src="/2024/05/17/Android/%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/Charles%E4%BB%A3%E7%90%86%E6%8A%93%E5%8C%85%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/1_ip%E5%9C%B0%E5%9D%80.png"></p>
+<p>再到手机wifi的设置中手动设置代理(Charles代理端口默认8888)</p>
+<img src="5_手机wifi代理设置.jpg" style="zoom:50%;" />
+
+<p>设置代理后在PC端允许连接</p>
+<p><img src="/2024/05/17/Android/%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/Charles%E4%BB%A3%E7%90%86%E6%8A%93%E5%8C%85%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/2_%E5%85%81%E8%AE%B8%E8%BF%9E%E6%8E%A5.png"></p>
+<h2 id="安装证书"><a href="#安装证书" class="headerlink" title="安装证书"></a>安装证书</h2><h3 id="下载证书"><a href="#下载证书" class="headerlink" title="下载证书"></a>下载证书</h3><p>首先需要下载Charles证书(默认.pem格式即可)</p>
+<p>可以通过浏览器下载或本地保存再通过adb推送至手机</p>
+<p><img src="/2024/05/17/Android/%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/Charles%E4%BB%A3%E7%90%86%E6%8A%93%E5%8C%85%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/9_%E4%B8%8B%E8%BD%BD%E8%AF%81%E4%B9%A6.png"></p>
+<p>如果选择浏览器下载会弹出ip和端口,手机端浏览器访问即可下载</p>
+<p><img src="/2024/05/17/Android/%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/Charles%E4%BB%A3%E7%90%86%E6%8A%93%E5%8C%85%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/8_%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AE%89%E8%A3%85%E8%AF%81%E4%B9%A6.png"></p>
+<p>如果保存到本地,通过adb push certificate.pem &#x2F;sdcard&#x2F;Download</p>
+<h3 id="安装证书-1"><a href="#安装证书-1" class="headerlink" title="安装证书"></a>安装证书</h3><p>搜索凭据,选择安装证书</p>
+<img src="10_加密凭据.jpg" style="zoom:50%;" />
+
+<p>安装CA证书</p>
+<img src="11_安装证书.jpg" style="zoom:50%;" />
+
+<h3 id="移动证书到系统目录"><a href="#移动证书到系统目录" class="headerlink" title="移动证书到系统目录"></a>移动证书到系统目录</h3><p>默认安装的证书为用户证书,可能导致被检测从而使得一些包抓不到</p>
+<p>可以使用<strong>MoveCertificate</strong>模块,地址<a href="https://github.com/ys1231/MoveCertificate">https://github.com/ys1231/MoveCertificate</a></p>
+<p>使用Magisk&#x2F;Apatch&#x2F;KernelSU均可以安装该模块,安装模块后,安装的用户证书会自动移动到系统证书目录</p>
+<p>经过以上操作就可以顺利抓包了,不过部分app可能存在SSL_Pining等检测反抓包,需要单独处理</p>
+]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>工具安装使用</tag>
+      </tags>
+  </entry>
 </search>
